@@ -1,9 +1,4 @@
 @extends('layouts.app')
-<head>
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
-    <link href="{{ asset('css/screen.css') }}" rel="stylesheet" media="screen">
-    <link href="{{ asset('css/components.css') }}" rel="stylesheet" media="screen">
-</head>
 
 @section('content')
 <div class="container">
@@ -52,14 +47,14 @@
                 </ul>
             </div>
           @endif
-      <div>
+
+
+
         <label>Choose Image File:</label>
+        <input type="file" id="file" name="file" style="display: none;" />
+        <input type="button" value="Browse..." onclick="document.getElementById('file').click();" />
       </div>
-      <div class="custom-file">
-              <input type="file" name="file" class="custom-file-input" id="chooseFile">
-              <label class="custom-file-label" for="chooseFile">Select file</label>
-      </div>
-    </div>
+
 
 
 

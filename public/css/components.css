@@ -144,7 +144,7 @@ dialog {
 }
 
 .panel {
-	border: 1px solid currentColor;
+	border: 0px;
 }
 
 .flex-grid-1 > *,
@@ -336,7 +336,7 @@ article > div {
 	height: 128px;
 	float: left;
 	margin: 0 32px 0 0;
-	object-fit: cover;	
+	object-fit: cover;
 	width: 128px;
 }
 .list article nav,
@@ -385,7 +385,7 @@ article > div {
 	margin: 0 1%;
 	overflow: hidden;
 	padding: 16px 0;
-	width: 22.9999999999%; 
+	width: 22.9999999999%;
 }
 .table article h3,
 #layout-table:checked ~ #layout-result article h3 {
@@ -472,7 +472,7 @@ article > div {
 	padding: 0;
 	overflow: hidden;
 	text-align: center;
-	width: 23.9999999999%; 
+	width: 23.9999999999%;
 }
 .gallery article h3,
 #layout-gallery:checked ~ #layout-result article h3 {
@@ -514,7 +514,7 @@ article > div {
 .gallery article:hover nav a,
 #layout-gallery:checked ~ #layout-result article:hover nav a {
 	background-color: rgba(255,255,255,1);
-}	
+}
 
 /* Cards view */
 
@@ -528,7 +528,7 @@ article > div {
 	margin: 0 0.5% 16px;
 	padding: 16px 0 0;
 	overflow: hidden;
-	width: 23.9999999999%; 
+	width: 23.9999999999%;
 }
 .cards article:hover,
 #layout-cards:checked ~ #layout-result article:hover {
@@ -559,7 +559,7 @@ article > div {
 #layout-cards:checked ~ #layout-result article div img {
 	height: 186px;
 	overflow: hidden;
-	object-fit: cover;	
+	object-fit: cover;
 	width: 100%;
 }
 .cards article nav,
@@ -588,7 +588,7 @@ article > div {
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
-	width: 24.9999999999%; 
+	width: 24.9999999999%;
 }
 .tiles article:hover,
 #layout-tiles:checked ~ #layout-result article:hover {
@@ -663,7 +663,7 @@ article > div {
 	border: none;
 	height: 256px;
 	overflow: hidden;
-	object-fit: cover;	
+	object-fit: cover;
 	width: 100%;
 }
 .tiles article nav,
@@ -748,21 +748,21 @@ article > div {
 
 .nav-sticky {
 	background-color: inherit;
-	position: -webkit-sticky; 
-	position: sticky; 
+	position: -webkit-sticky;
+	position: sticky;
 	top: 0;
 	left: 0;
 	z-index: 10;
 }
 @media (max-width: 1024px) {
 	.nav-sticky {
-		position: relative; 
+		position: relative;
 	}
 }
 
 /* Scroll navigation */
 
-.nav-scroll div { 
+.nav-scroll div {
 	height: 64px;
 	overflow-x: auto;
 	white-space: nowrap;
@@ -912,7 +912,7 @@ dialog {
 .collapser em label,
 .accordion em label {
 	display: block;
-	position: relative;	
+	position: relative;
 	width: 100%;
 }
 .menu nav > ul,
@@ -971,20 +971,20 @@ input:checked ~ .overlay-transparent,
 	left: 0;
 	width: 100%;
 	height: auto;
-	
+
 	-webkit-transform-style: preserve-3d;
 	   -moz-transform-style: preserve-3d;
 	     -o-transform-style: preserve-3d;
 			transform-style: preserve-3d;
-	
+
 	-webkit-backface-visibility: hidden;
 	   -moz-backface-visibility: hidden;
 	     -o-backface-visibility: hidden;
 			backface-visibility: hidden;
-	
+
 	-webkit-transition: all .4s ease-in-out;
 	   -moz-transition: all .4s ease-in-out;
-	     -o-transition: all .4s ease-in-out;	   
+	     -o-transition: all .4s ease-in-out;
 			transition: all .4s ease-in-out;
 }
 .flip header {
@@ -1317,8 +1317,8 @@ nav strong label mark {
 	background-color: #fff;
 	padding: 0;
 	text-align: center;
-	position: -webkit-sticky; 
-	position: sticky; 
+	position: -webkit-sticky;
+	position: sticky;
 	top: 0;
 	left: 0;
 	z-index: 1;

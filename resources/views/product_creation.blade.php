@@ -1,9 +1,5 @@
 @extends('layouts.app')
-<head>
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
-    <link href="{{ asset('css/screen.css') }}" rel="stylesheet" media="screen">
-    <link href="{{ asset('css/components.css') }}" rel="stylesheet" media="screen">
-</head>
+
 
 @section('content')
 <div class="container">
@@ -55,7 +51,7 @@
 
     <div class="form-group">
         <label>Price (In Euros)</label>
-        <input type="text" class="form-control {{ $errors->has('stock') ? 'error' : '' }}" name="price" id="price">
+        <input type="text" class="form-control {{ $errors->has('price') ? 'error' : '' }}" name="price" id="price">
 
         <!-- Error -->
         @if ($errors->has('price'))
@@ -77,13 +73,9 @@
                 </ul>
             </div>
           @endif
-      <div>
-        <label>Choose Image File:</label>
-      </div>
-      <div class="custom-file">
-              <input type="file" name="file" class="custom-file-input" id="chooseFile">
-              <label class="custom-file-label" for="chooseFile">Select file</label>
-      </div>
+          <label>Choose Image File:</label>
+          <input type="file" id="file" name="file" style="display: none;" />
+          <input type="button" value="Browse..." onclick="document.getElementById('file').click();" />
     </div>
 
 

@@ -1,9 +1,7 @@
 @extends('layouts.app')
 <head>
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style_product_list.css') }}">
-    <link href="{{ asset('css/screen.css') }}" rel="stylesheet" media="screen">
-    <link href="{{ asset('css/components.css') }}" rel="stylesheet" media="screen">
 
 </head>
 

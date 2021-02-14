@@ -1,0 +1,12 @@
+
+#checkoutButton{
+  width: 100%;
+}
+
+.total_price{
+  color: var(--color-softblack);
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 10px;
+
+}

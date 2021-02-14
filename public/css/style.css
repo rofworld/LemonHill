@@ -1,22 +1,24 @@
 .container {
-    max-width: 500px;
-    margin: 50px auto;
+    margin-left: 50px;
     text-align: justify;
+    color: var(--color-softblack);
 }
 
-form {
-    border: 1px solid #1A33FF;
-    background: #ecf5fc;
-    padding: 40px 50px 45px;
+.gallery article h3{
+  font-size: 20px;
 }
 
-.form-control:focus {
-    border-color: #000;
-    box-shadow: none;
-}
 
 label {
     font-weight: 600;
+}
+
+form{
+  padding: 10px;
+}
+
+.form-group{
+  padding:10px;
 }
 
 .error {
@@ -32,7 +34,42 @@ label {
     padding: .375rem .75rem;
 }
 
+.alert {
+    position: relative;
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+}
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.alert-warning {
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+}
+
+.btn-block{
+  margin-top: 10px;
+  width: 100%;
+}
+
 .button-dark:hover{
   background-color: black;
   color:white;
+}
+
+.pull-right{
+  float: right;
 }

@@ -1,9 +1,6 @@
 @extends('layouts.app')
 <head>
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style_artist.css') }}">
-    <link href="{{ asset('css/screen.css') }}" rel="stylesheet" media="screen">
-    <link href="{{ asset('css/components.css') }}" rel="stylesheet" media="screen">
 </head>
 
 
@@ -12,6 +9,11 @@
   @if(session()->has('success'))
     <div class="alert alert-success">
         {{ session()->get('success') }}
+    </div>
+  @endif
+  @if(session()->has('warning'))
+    <div class="alert alert-warning">
+        {{ session()->get('warning') }}
     </div>
   @endif
 <div class="simple">

@@ -28,7 +28,7 @@ class ProductAdminController extends Controller
           'description' => ['required','max:1000'],
           'file' => 'required|mimes:jpeg,png,bmp,tiff|max:4096',
           'stock' => 'required|integer|min:0',
-          'price' => 'required|integer|min:0'
+          'price' => 'required|numeric|min:0'
 
        ]);
 
@@ -62,7 +62,7 @@ class ProductAdminController extends Controller
         'description' => ['required','max:1000'],
         'file' => 'required|mimes:jpeg,png,bmp,tiff|max:4096',
         'stock' => 'required|integer|min:0',
-        'price' => 'required|integer|min:0'
+        'price' => 'required|numeric|min:0'
 
      ]);
 
@@ -82,7 +82,7 @@ class ProductAdminController extends Controller
             'price' => $request->price,
             'image_url' => $filePath
           ]);
-          
+
       }
 
 

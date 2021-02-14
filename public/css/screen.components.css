@@ -11,8 +11,8 @@
 * {
 	margin: 0;
 	padding: 0;
-	-webkit-box-sizing: border-box; 
-	-moz-box-sizing: border-box; 
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
 *,
@@ -21,7 +21,7 @@
 *:hover:after,
 *:target,
 *:focus {
-	/*Transition*/ 
+	/*Transition*/
 	-webkit-transition: all .25s ease;
 	-moz-transition: all .25s ease;
 	-ms-transition: all .25s ease;
@@ -70,36 +70,36 @@ main,
 nav,
 pre,
 section,
-summary { 
+summary {
 	display: block;
 	position: relative;
 }
 audio,
 canvas,
 progress,
-video { 
+video {
 	display: inline-block;
 	vertical-align: baseline;
 }
-[hidden],template { 
+[hidden],template {
 	display: none;
 }
-area, 
-audio, 
-canvas, 
-img, 
-map, 
+area,
+audio,
+canvas,
+img,
+map,
 object,
 svg,
 video {
 	max-width: 100%;
 }
 a, button, select, label,
-input[type="submit"], 
-input[type="button"], 
-input[type="checkbox"], 
-input[type="radio"], 
-input[type="file"], 
+input[type="submit"],
+input[type="button"],
+input[type="checkbox"],
+input[type="radio"],
+input[type="file"],
 summary {
 	cursor: pointer;
 }
@@ -108,11 +108,11 @@ summary {
 
 /* Headings */
 
-h1, 
-h2, 
-h3, 
-h4, 
-h5, 
+h1,
+h2,
+h3,
+h4,
+h5,
 h6 {
 	border: 1px solid transparent;
 	font-weight: bold;
@@ -133,7 +133,7 @@ h2 {
 	font-size: 2.4em;
 }
 h3 {
-	font-size: 2em;
+	font-size: 24px;
 }
 h4 {
 	font-size: 1.8em;
@@ -144,11 +144,11 @@ h5 {
 h6 {
 	font-size: 1em;
 }
-h1 small, 
-h2 small, 
-h3 small, 
-h4 small, 
-h5 small, 
+h1 small,
+h2 small,
+h3 small,
+h4 small,
+h5 small,
 h6 small {
 	font-size: 50%;
 	font-weight: 400;
@@ -197,8 +197,8 @@ h6 u:after {
 	h6 {
 		font-size: 1em;
 	}
-	h1, 
-	h2, 
+	h1,
+	h2,
 	h3 {
 		line-height: 64px;
 	}
@@ -211,7 +211,7 @@ h6 u:after {
 
 /* Breaks */
 
-hr, 
+hr,
 br {
 	border: 1px solid transparent;
 	height: 32px;
@@ -279,7 +279,7 @@ code {
 	font-size: 20px;
 	line-height: 32px;
 }
-code, 
+code,
 pre {
 	font-family; var(--font-code);
 }
@@ -367,16 +367,16 @@ details {
 /* Forms */
 
 button,
-input, 
-form, 
-legend, 
-datalist, 
-label, 
+input,
+form,
 legend,
-select, 
-option, 
+datalist,
+label,
+legend,
+select,
+option,
 optgroup,
-select, 
+select,
 textarea,
 [contenteditable="true"] {
 	background-color: transparent;
@@ -406,7 +406,7 @@ input:invalid {
 input[type=radio] {
 	border-radius: 50%;
 }
-input[type=radio]:checked, 
+input[type=radio]:checked,
 input[type=checkbox]:checked {
 	color: var(--color-green);
 }
@@ -420,7 +420,7 @@ input[type=submit] {
 /* Form & fieldset */
 
 fieldset,
-form { 
+form {
 	background-color: inherit;
 	width: 100%;
 }
@@ -439,19 +439,19 @@ progress, meter {
 	width: 100%;
 }
 progress::-webkit-progress-bar,
-meter::-webkit-meter-bar {  
+meter::-webkit-meter-bar {
 	background: var(--color-grey);
-}  
-progress::-webkit-progress-value {  
+}
+progress::-webkit-progress-value {
 	background: var(--color-blue);
 }
-meter::-webkit-meter-optimum-value {  
+meter::-webkit-meter-optimum-value {
 	background: var(--color-green);
 }
-progress::-moz-progress-bar {  
+progress::-moz-progress-bar {
 	background: var(--color-black);
 }
-meter::-moz-meter-bar {  
+meter::-moz-meter-bar {
 	background: var(--color-green);
 }
 
@@ -511,7 +511,7 @@ strong input[type=radio] + label:before {
 	border: 2px solid currentColor;
 	content: ' ';
 	cursor: pointer;
-	display: block; 
+	display: block;
 	float: left;
 	font-size: 32px;
 	font-weight: bold;
@@ -531,7 +531,7 @@ strong input + label {
 	font-weight: bold;
 	padding: 32px 0;
 }
-strong [type=checkbox] + label, 
+strong [type=checkbox] + label,
 strong [type=radio] + label {
 	cursor: pointer;
 }
@@ -602,13 +602,13 @@ strong select {
 
 /* Tables */
 
-table, 
-caption, 
-thead, 
-tbody, 
-tfoot, 
-tr, 
-th, 
+table,
+caption,
+thead,
+tbody,
+tfoot,
+tr,
+th,
 td {
 	border: thin solid transparent;
 	font-weight: 200;
@@ -627,7 +627,7 @@ tbody {}
 caption,
 col,
 colgroup,
-thead, 
+thead,
 tfoot {
 	background-color: var(--color-translucentwhite);
 }
@@ -635,7 +635,7 @@ td, th {
 	border-bottom: 1px solid currentColor;
 	padding: 0 15px;
 }
-th { 
+th {
 	background: var(--color-translucentwhite);
 	font-weight: bold;
 }
@@ -670,7 +670,7 @@ em small label {
 	padding: 15px;
 	white-space: nowrap;
 	overflow: hidden;
-	text-overflow: ellipsis;	
+	text-overflow: ellipsis;
 	width: 64px;
 	text-align: center;
 }
@@ -808,9 +808,9 @@ nav form input[type=text]:focus {
 }
 nav form input[type=submit] {
 	display: none;
-	height: 32px; 
+	height: 32px;
 	width: 32px;
-	line-height: 28px; 	
+	line-height: 28px;
 	padding: 0;
 	position: absolute;
 	right: 0;
@@ -852,8 +852,8 @@ nav label {
 
 /* ------------------------------------------------------------ Structure */
 
-header, 
-main, 
+header,
+main,
 footer,
 article > div,
 aside > div,
@@ -1014,13 +1014,13 @@ a:hover, a:active, a:visited, a:visited:hover {
 	-moz-opacity: 0.9;
 	opacity: 0.9;
 }
-h1 a:not(:hover), 
-h2 a:not(:hover), 
+h1 a:not(:hover),
+h2 a:not(:hover),
 h3 a:not(:hover),
-h4 a:not(:hover), 
-h5 a:not(:hover), 
+h4 a:not(:hover),
+h5 a:not(:hover),
 h6 a:not(:hover),
-a:after, 
+a:after,
 a:before,
 nav a:not(:hover) {
 	text-decoration: none !important;
@@ -1087,17 +1087,17 @@ a:visited:active {
 #theme-meridianus:checked ~ #page-nav,
 #theme-meridianus:checked ~ div > dialog {
 	background-color: var(--color-bgmeridianus);
-	color: var(--color-textmeridianus);	
+	color: var(--color-textmeridianus);
 }
 #theme-meridianus:checked ~ #page a {
-	color: var(--color-textmeridianus);	
+	color: var(--color-textmeridianus);
 }
 #theme-meridianus:checked ~ #page em a,
 #theme-meridianus:checked ~ #page em label,
 #theme-meridianus:checked ~ #page em button,
 #theme-meridianus:checked ~ #page em a:visited {
 	background-color: var(--color-textmeridianus);
-	color: var(--color-white);	
+	color: var(--color-white);
 }
 #theme-meridianus:checked ~ #page a:visited {
 	color: var(--color-textmeridianus);
@@ -1124,17 +1124,17 @@ a:visited:active {
 #theme-vesperum:checked ~ #page-nav,
 #theme-vesperum:checked ~ div > dialog {
 	background-color: var(--color-bgvesperum);
-	color: var(--color-textvesperum);	
+	color: var(--color-textvesperum);
 }
 #theme-vesperum:checked ~ #page a {
-	color: var(--color-textvesperum);	
+	color: var(--color-textvesperum);
 }
 #theme-vesperum:checked ~ #page em a,
 #theme-vesperum:checked ~ #page em label,
 #theme-vesperum:checked ~ #page em button,
 #theme-vesperum:checked ~ #page em a:visited {
 	background-color: var(--color-textvesperum);
-	color: var(--color-white);	
+	color: var(--color-white);
 }
 #theme-vesperum:checked ~ #page a:visited {
 	color: var(--color-textvesperum);
@@ -1161,16 +1161,16 @@ a:visited:active {
 #theme-nox:checked ~ #page-nav,
 #theme-nox:checked ~ div > dialog {
 	background-color: var(--color-softblack);
-	color: var(--color-white);	
+	color: var(--color-white);
 }
 #theme-nox:checked ~ #page a {
-	color: var(--color-white);	
+	color: var(--color-white);
 }
 #theme-nox:checked ~ #page em a,
 #theme-nox:checked ~ #page em label,
 #theme-nox:checked ~ #page em button {
 	background-color: var(--color-black);
-	color: var(--color-softgrey);	
+	color: var(--color-softgrey);
 }
 #theme-nox:checked ~ #page a:visited,
 #theme-nox:checked ~ #page em a:visited {
@@ -1191,7 +1191,7 @@ a:visited:active {
 	background-color: var(--color-translucentwhite);
 }
 
-/* Page grid 
+/* Page grid
 #page {
 	background-image: linear-gradient(to bottom, cyan 0, rgba(255, 255, 255, 0) 1px);
 	background-repeat: repeat-y;
@@ -1205,7 +1205,7 @@ a:visited:active {
 :root {
 	/* Page Width */
 	--page-size: 1200px;
-	
+
 	/* Soft Colors */
 	--color-softyellow: rgba(253,242,208,1);
 	--color-softorange: rgba(248,228,211,1);
@@ -1215,7 +1215,7 @@ a:visited:active {
 	--color-softblue: rgba(209,234,249,1);
 	--color-softturquoise: rgba(228,238,238,1);
 	--color-softgreen: rgba(220,244,228,1);
-	
+
 	/* Colors */
 	--color-yellow: rgba(244,192,21,1);
 	--color-orange: rgba(204,119,34,1);
@@ -1233,26 +1233,26 @@ a:visited:active {
 	--color-hardgrey: rgba(90,90,90,1);
 	--color-softblack: rgba(60,60,60,1);
 	--color-black: rgba(0,0,0,1);
-	
+
 	/* Meridianus Theme */
 	--color-bgmeridianus: rgba(248,228,211,1);
 	--color-textmeridianus: rgba(204,119,34,1);
 	--color-starredmeridianus: rgba(168,47,47,1);
-	
+
 	/* vesperum Theme */
 	--color-bgvesperum: rgba(228,220,238,1);
 	--color-textvesperum: rgba(120,81,169,1);
 	--color-starredvesperum: rgba(102,2,60,1);
-	
+
 	/* Overlays */
 	--color-translucentblack: rgba(0,0,0,.5);
 	--color-translucentwhite: rgba(255,255,255,.4);
-		
+
 	/* Font stacks */
-	--font-default: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif;
+	--font-default: Helvetica, Verdana;
 	--font-code: Monaco, Menlo, Consolas,'Courier New', monospace;
 }
-	
+
 /* The end */
 
 /* BCN CSS Components by Acózar 2019 (www.acozar.com) */
@@ -1593,7 +1593,7 @@ article > div {
 	height: 128px;
 	float: left;
 	margin: 0 32px 0 0;
-	object-fit: cover;	
+	object-fit: cover;
 	width: 128px;
 }
 .list article nav,
@@ -1642,7 +1642,7 @@ article > div {
 	margin: 0 1%;
 	overflow: hidden;
 	padding: 16px 0;
-	width: 22.9999999999%; 
+	width: 22.9999999999%;
 }
 .table article h3,
 #layout-table:checked ~ #layout-result article h3 {
@@ -1729,7 +1729,7 @@ article > div {
 	padding: 0;
 	overflow: hidden;
 	text-align: center;
-	width: 23.9999999999%; 
+	width: 23.9999999999%;
 }
 .gallery article h3,
 #layout-gallery:checked ~ #layout-result article h3 {
@@ -1771,7 +1771,7 @@ article > div {
 .gallery article:hover nav a,
 #layout-gallery:checked ~ #layout-result article:hover nav a {
 	background-color: rgba(255,255,255,1);
-}	
+}
 
 /* Cards view */
 
@@ -1785,7 +1785,7 @@ article > div {
 	margin: 0 0.5% 16px;
 	padding: 16px 0 0;
 	overflow: hidden;
-	width: 23.9999999999%; 
+	width: 23.9999999999%;
 }
 .cards article:hover,
 #layout-cards:checked ~ #layout-result article:hover {
@@ -1816,7 +1816,7 @@ article > div {
 #layout-cards:checked ~ #layout-result article div img {
 	height: 186px;
 	overflow: hidden;
-	object-fit: cover;	
+	object-fit: cover;
 	width: 100%;
 }
 .cards article nav,
@@ -1845,7 +1845,7 @@ article > div {
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
-	width: 24.9999999999%; 
+	width: 24.9999999999%;
 }
 .tiles article:hover,
 #layout-tiles:checked ~ #layout-result article:hover {
@@ -1920,7 +1920,7 @@ article > div {
 	border: none;
 	height: 256px;
 	overflow: hidden;
-	object-fit: cover;	
+	object-fit: cover;
 	width: 100%;
 }
 .tiles article nav,
@@ -2005,21 +2005,21 @@ article > div {
 
 .nav-sticky {
 	background-color: inherit;
-	position: -webkit-sticky; 
-	position: sticky; 
+	position: -webkit-sticky;
+	position: sticky;
 	top: 0;
 	left: 0;
 	z-index: 10;
 }
 @media (max-width: 1024px) {
 	.nav-sticky {
-		position: relative; 
+		position: relative;
 	}
 }
 
 /* Scroll navigation */
 
-.nav-scroll div { 
+.nav-scroll div {
 	height: 64px;
 	overflow-x: auto;
 	white-space: nowrap;
@@ -2169,7 +2169,7 @@ dialog {
 .collapser em label,
 .accordion em label {
 	display: block;
-	position: relative;	
+	position: relative;
 	width: 100%;
 }
 .menu nav > ul,
@@ -2228,20 +2228,20 @@ input:checked ~ .overlay-transparent,
 	left: 0;
 	width: 100%;
 	height: auto;
-	
+
 	-webkit-transform-style: preserve-3d;
 	   -moz-transform-style: preserve-3d;
 	     -o-transform-style: preserve-3d;
 			transform-style: preserve-3d;
-	
+
 	-webkit-backface-visibility: hidden;
 	   -moz-backface-visibility: hidden;
 	     -o-backface-visibility: hidden;
 			backface-visibility: hidden;
-	
+
 	-webkit-transition: all .4s ease-in-out;
 	   -moz-transition: all .4s ease-in-out;
-	     -o-transition: all .4s ease-in-out;	   
+	     -o-transition: all .4s ease-in-out;
 			transition: all .4s ease-in-out;
 }
 .flip header {
@@ -2574,8 +2574,8 @@ nav strong label mark {
 	background-color: #fff;
 	padding: 0;
 	text-align: center;
-	position: -webkit-sticky; 
-	position: sticky; 
+	position: -webkit-sticky;
+	position: sticky;
 	top: 0;
 	left: 0;
 	z-index: 1;

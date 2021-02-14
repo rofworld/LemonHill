@@ -1,5 +1,6 @@
 @extends('layouts.app')
 <head>
+
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style_links.css') }}">
 </head>

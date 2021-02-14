@@ -55,7 +55,7 @@
 
     <div class="form-group">
         <label>Price (in Euros)</label>
-        <input type="text" class="form-control {{ $errors->has('stock') ? 'error' : '' }}" name="price" id="price" value="{{$product->price}}">
+        <input type="text" class="form-control {{ $errors->has('price') ? 'error' : '' }}" name="price" id="price" value="{{$product->price}}">
 
         <!-- Error -->
         @if ($errors->has('price'))
@@ -76,13 +76,9 @@
                 </ul>
             </div>
           @endif
-      <div>
-        <label>Choose Image File:</label>
-      </div>
-      <div class="custom-file">
-              <input type="file" name="file" class="custom-file-input" id="chooseFile" value="{{$product->image_url}}">
-              <label class="custom-file-label" for="chooseFile">Select file</label>
-      </div>
+          <label>Choose Image File:</label>
+          <input type="file" id="file" name="file" style="display: none;" />
+          <input type="button" value="Browse..." onclick="document.getElementById('file').click();" />
     </div>
 
 

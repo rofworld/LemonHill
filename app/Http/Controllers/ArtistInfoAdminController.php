@@ -47,7 +47,15 @@ class ArtistInfoAdminController extends Controller
   }
 
   public function delete($id){
-    ArtistInfo::destroy($id);
-    return back()->with('success', 'You have successfully deleted an Artist');
+
+    try {
+      ArtistInfo::destroy($id);
+      return back()->with('success', 'You have successfully deleted an Artist');
+
+    } catch (\Exception $e) {
+      return back()->with('warning', 'Database violation');
+
+    }
+
   }
 }

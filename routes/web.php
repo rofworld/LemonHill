@@ -43,5 +43,12 @@ Route::get('/artist_info/delete/{id}', [App\Http\Controllers\ArtistInfoAdminCont
 Route::get('/links/list/{id}', [App\Http\Controllers\LinksController::class,'ListLinks']);
 Route::get('/links/newlink', [App\Http\Controllers\LinksController::class,'newLink'])->name('link.store');
 
-Route::get('/product',[App\Http\Controllers\ProductController::class,'show']);
-Route::post('/charge',[App\Http\Controllers\PaymentController::class,'pay']);
+
+Route::get('/onlineShop',[App\Http\Controllers\shoppingCartController::class,'viewShop']);
+Route::get('/product_view/{id}',[App\Http\Controllers\shoppingCartController::class,'viewProduct']);
+Route::post('/product_view/addToCart',[App\Http\Controllers\shoppingCartController::class,'addToCart']);
+Route::get('/shoppingCart/{id}',[App\Http\Controllers\shoppingCartController::class,'viewCart']);
+
+
+Route::get('/checkout/{id}',[App\Http\Controllers\PaymentController::class,'paymentDetails'] );
+Route::post('/checkout/pay',[App\Http\Controllers\PaymentController::class,'pay'] );

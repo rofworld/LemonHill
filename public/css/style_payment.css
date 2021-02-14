@@ -1,8 +1,54 @@
-#card-element{
-  width: 50%;
+
+
+.form-control{
+  border-color: var(--color-blue);
+  width:70%;
+  left:15%;
+  right: 15%;
+  height: 40px;
+  border-radius: 25px;
+  margin-top: 10px;
 }
 
-.payment-button{
+.form-control-ccn{
+  border-color: var(--color-blue);
+  width:50%;
+  left:15%;
+  height: 40px;
+  border-radius: 25px;
   margin-top: 10px;
-  width:25%;
+}
+
+.form-control-expiry-month{
+  border-color: var(--color-blue);
+  width:30%;
+  left:15%;
+  height: 40px;
+  border-radius: 25px;
+  margin-top: 10px;
+}
+
+.form-control-expiry-year{
+  border-color: var(--color-blue);
+  width:30%;
+  left:15%;
+  height: 40px;
+  border-radius: 25px;
+  margin-top: 10px;
+}
+
+.form-control-cvc{
+  border-color: var(--color-blue);
+  width:30%;
+  left:15%;
+  height: 40px;
+  border-radius: 25px;
+  margin-top: 10px;
+}
+
+.btn-submit{
+  width:70%;
+  left:15%;
+  right: 15%;
+  margin-top: 20px;
 }
