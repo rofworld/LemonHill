@@ -20,6 +20,7 @@ class LinksController extends Controller
   }
 
   public function newLink() {
+      if (Auth::user()->admin==true){
       $newlink = Request::get('newlink', '');
       $artist_id = Request::get('artist_id', 0);
       //  Store data in database
@@ -32,7 +33,9 @@ class LinksController extends Controller
             return back()->with('success', 'You have successfully added a new link');
           }
 
-
+        }else{
+          return "Not allowed";
+        }
       //
 
   }

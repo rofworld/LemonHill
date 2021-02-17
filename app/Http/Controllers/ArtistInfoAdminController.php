@@ -5,13 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\ArtistInfo;
+use Illuminate\Support\Facades\Auth;
 
 
 class ArtistInfoAdminController extends Controller
 {
   // Create Contact Form
   public function createForm(Request $request) {
-    return view('artist_info_admin');
+    if (Auth::user()->admin==true){
+      return view('artist_info_admin');
+    }else{
+      return "Not allowed";
+    }
   }
 
   // Store Contact Form data
@@ -47,15 +52,17 @@ class ArtistInfoAdminController extends Controller
   }
 
   public function delete($id){
+    if (Auth::user()->admin==true){
+      try {
+        ArtistInfo::destroy($id);
+        return back()->with('success', 'You have successfully deleted an Artist');
 
-    try {
-      ArtistInfo::destroy($id);
-      return back()->with('success', 'You have successfully deleted an Artist');
+      } catch (\Exception $e) {
+        return back()->with('warning', 'Database violation');
 
-    } catch (\Exception $e) {
-      return back()->with('warning', 'Database violation');
-
+      }
+    }else{
+      return "Not allowed";
     }
-
   }
 }

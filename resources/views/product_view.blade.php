@@ -7,10 +7,13 @@
 @section('content')
 
 <div class="container">
+  <div id="status">
+  </div>
   <section>
 	<header>
 		<h3><u>{{$product->name}} {{$product->price}} €</u></h3>
 	</header>
+
 	<div>
     <div class="flex-grid-2">
     	<section class="panel"><img src="{{url('storage/'.$product->image_url)}}"></section>
@@ -27,7 +30,7 @@
     <div class="form-group">
   		<em><button id="addToCartButton" title="Add to Cart Button" class="addToCartButton">Add to Cart</button></em>
     </div>
-    @if (!$shoppingCarts->isEmpty())
+    @if (Auth::check() && !$shoppingCarts->isEmpty())
       <div class="form-group">
     		<em><a class="viewCartButton" href="{{ url('/shoppingCart/'.$shoppingCarts[0]->id)}}">View Shopping Cart ( {{$total_products}} )</a></em>
       </div>

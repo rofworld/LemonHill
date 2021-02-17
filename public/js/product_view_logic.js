@@ -36,7 +36,15 @@ $('#addToCartButton').click(function () {
     // Log a message to the console
     //console.log(response);
     //console.log(textStatus); //push array
-    location.reload();
+    if (response =="NOSTOCK"){
+      $('#status').append('<div class="alert alert-warning">' + "Not enough stock" + '</div>');
+      window.scrollTo(0,0);
+    }else if (response =="NOLIN") {
+      $('#status').append('<div class="alert alert-warning">' + "Not Logged In. Please Log in or Register" + '</div>');
+      window.scrollTo(0,0);
+    }else{
+      location.reload();
+    }
 
   });
   request.fail(function (jqXHR, textStatus, errorThrown) {

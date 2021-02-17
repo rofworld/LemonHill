@@ -9,5 +9,7 @@ class Order extends Model
 {
     use HasFactory;
     protected $table = 'orders';
-    public $fillable = [ 'user_id','send_address','postal_code','country','provincia'];
+    public $fillable = [ 'user_id','send_name','send_address','city','postal_code','country','provincia','total_price','sent'];
+
+
 }

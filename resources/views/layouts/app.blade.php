@@ -20,6 +20,9 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     -->
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Yesteryear&display=swap" rel="stylesheet">
     <!-- Styles -->
     <!--
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -32,50 +35,58 @@
 </head>
 <body>
     <main id="page-main">
+      <nav id="site-nav" class="nav-smart">
+				<div>
+          <input type="checkbox" id="mobnav" name="mobnav" aria-hidden="true" hidden="">
+          <strong><label for="mobnav"><span class="symbol-list"></span><mark></mark></label></strong>
+          <div hidden="">
+					<a class="site-logo" href="http://acozar.github.io/bcncss/" title="Lemon Hill">
+						<img src="/images/descarga.jpg" alt="Lemon Hill Logo" class="image-logo"><b>Lemon Hill</b>
+					</a>
+          <a href="{{ url('/artist_info')}}" title="Artist Info" style="margin-left:150px;">Artist Info</a>
+          <a href="{{ url('/onlineShop')}}" title="Online Shop">Online Shop</a>
+          @guest
 
-        <nav id="site-nav" class="nav-smart">
-          <div>
-            <a class="site-logo" href="http://acozar.github.io/bcncss/" title="Barcelona CSS">
-						<img src="{{ asset('images/descarga.jpg') }}" alt="BCN CSS">
-					  </a>
-            <input type="checkbox" id="mobnav" name="mobnav" aria-hidden="true" hidden="">
-            <strong><label for="mobnav">Menú<mark></mark></label></strong>
-            <div hidden="">
-						<a href="index.html" title="BCNcss">BCNCSS</a>
-						<a href="styles.html" title="Styles">Styles</a>
-            @guest
-                            @if (Route::has('login'))
 
-                                    <a href="{{ route('login') }}">{{ __('Login') }}</a>
 
-                            @endif
+                @if (Route::has('login'))
 
-                            @if (Route::has('register'))
+                <a href="{{ route('login') }}">{{ __('Login') }}</a>
 
-                                    <a href="{{ route('register') }}">{{ __('Register') }}</a>
+                @endif
 
-                            @endif
+                @if (Route::has('register'))
+
+                <a href="{{ route('register') }}">{{ __('Register') }}</a>
+
+                @endif
+
             @else
-              <div class="menu pull-right" >
-              			<label for="navmenu-1" style="font-weight:normal;">{{ Auth::user()->name }}<mark></mark></label>
-              			<input type="checkbox" id="navmenu-1" name="navmenu" hidden>
-              			<label class="overlay-transparent" for="navmenu-1" hidden></label>
-              			<nav hidden>
-              				<ul>
-              					<li><a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">{{ __('Logout') }}</a></li>
-                      <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                          @csrf
-                      </form>
-              				</ul>
-              			</nav>
-		           </div>
+                <a href="{{ route('logout') }}"  onclick="event.preventDefault();
+                                                   document.getElementById('logout-form').submit();">{{ __('Logout') }}</a></li>
+                                                   <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                                        @csrf
+                                                    </form>
 
-            @endguest
-            </div>
-          </div>
-        </nav>
-<hr>
+          @endguest
+
+
+
+				 </div>
+       </div>
+			</nav>
+      <hr>
+      @if (Auth::check() && Auth::user()->admin==true)
+      <nav id="page-nav" class="nav-scroll">
+      <div>
+        <a href="/product_list_admin" title="Product List">Product List</a>
+        <a href="/product_creation_form" title="Create Product">Create Product</a>
+        <a href="/artist_info_admin" title="Create Artist">Create Artist</a>
+        <a href="/list_orders" title="Orders">Orders</a>
+       </div>
+       </nav>
+       <hr>
+       @endif
 @yield('content')
 
 </main>

@@ -40,6 +40,7 @@ Route::get('/artist_info', [App\Http\Controllers\ArtistInfoController::class, 'L
 Route::get('/artist_info/delete/{id}', [App\Http\Controllers\ArtistInfoAdminController::class,'delete']);
 
 
+
 Route::get('/links/list/{id}', [App\Http\Controllers\LinksController::class,'ListLinks']);
 Route::get('/links/newlink', [App\Http\Controllers\LinksController::class,'newLink'])->name('link.store');
 
@@ -52,3 +53,8 @@ Route::get('/shoppingCart/{id}',[App\Http\Controllers\shoppingCartController::cl
 
 Route::get('/checkout/{id}',[App\Http\Controllers\PaymentController::class,'paymentDetails'] );
 Route::post('/checkout/pay',[App\Http\Controllers\PaymentController::class,'pay'] );
+
+
+Route::get('/list_orders',[App\Http\Controllers\OrderController::class,'list'] );
+Route::post('list_orders/markAsSent',[App\Http\Controllers\OrderController::class,'markAsSent'] );
+Route::get('/orders/view/{id}',[App\Http\Controllers\OrderController::class,'viewOrder'] );

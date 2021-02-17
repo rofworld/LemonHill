@@ -9,16 +9,20 @@
 
 @section('content')
 <div class="container">
-
+<div id="status">
+</div>
   <h3 style="margin-left:15%;"><u>Payment Details</u></h3>
   <div class="payment-details">
                         <input id="shoppingCartId" type="text" value="{{$shoppingCartId}}" hidden>
+                        <input id="total_price" type="text" value="{{$total_price}}" hidden>
+                        <label style="margin-left:15%;">Datos de envio</label>
+                        <div id="form-send-data">
                         <div class="form-group">
                           <div>
-                                <label for="name" class="form-control">{{ __('Nombre del titular de la tarjeta') }}</label>
+                                <label for="name" class="form-control">{{ __('Nombre Completo') }}</label>
                           </div>
                           <div>
-                                <input id="cardholder_name" type="text" class="form-control" required>
+                                <input id="send_name" type="text" class="form-control" required>
                           </div>
 
                         </div>
@@ -40,6 +44,15 @@
 
                               <div>
                                 <input id="cp" type="text" class="form-control" required>
+                              </div>
+
+                        </div>
+                        <div class="form-group">
+                              <div>
+                                <label for="city" class="form-control">{{ __('Ciudad') }}</label>
+                              </div>
+                              <div>
+                                <input id="city" type="text" class="form-control" required>
                               </div>
 
                         </div>
@@ -66,13 +79,15 @@
                             </div>
 
                         </div>
-
+                      </div>
+                      <label style="margin-left:15%;">Datos de pago</label>
+                      <div id="form-payment-data">
                         <div class="form-group">
                           <div>
                           <label for="ccn" class="form-control">Credit Card Number:</label>
                           </div>
                           <div>
-                          <input id="ccn" class="form-control-ccn" type="text" maxlength="19" placeholder="xxxx xxxx xxxx xxxx" required>
+                          <input id="ccn" class="form-control-ccn" type="text" maxlength="19" placeholder="xxxxxxxxxxxxxxxx" required>
                           </div>
                         </div>
                         <div class="form-group">
@@ -99,7 +114,7 @@
                           <input id="cvc" class="form-control-cvc" type="text" required>
                           </div>
                         </div>
-
+                      </div>
                       <em><button id="btn-submit" class="btn-submit">
                                     Pay ( {{$total_price}} € )
                       </button></em>

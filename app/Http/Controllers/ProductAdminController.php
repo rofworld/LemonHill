@@ -4,19 +4,28 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 
 class ProductAdminController extends Controller
 {
   public function createForm(Request $request) {
-    return view('product_creation');
+    if (Auth::user()->admin==true){
+      return view('product_creation');
+    }else{
+      return "Not allowed";
+    }
 
   }
 
 
   public function editForm($id) {
-    $product=Product::where('id', $id)->first();
-    return view('product_edit')
-    ->with('product',$product);
+    if (Auth::user()->admin==true){
+      $product=Product::where('id', $id)->first();
+      return view('product_edit')
+      ->with('product',$product);
+    }else{
+      return "Not allowed";
+    }
   }
 
   // Store Contact Form data
@@ -102,8 +111,12 @@ class ProductAdminController extends Controller
   }
 
   public function delete($id){
-    Product::destroy($id);
-    return back()->with('success', 'You have successfully deleted a Product');
+    if (Auth::user()->admin==true){
+      Product::destroy($id);
+      return back()->with('success', 'You have successfully deleted a Product');
+    }else{
+      return "Not allowed";
+    }
   }
 
   public function changeStock(Request $request){

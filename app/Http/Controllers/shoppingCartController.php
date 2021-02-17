@@ -12,19 +12,38 @@ class shoppingCartController extends Controller
 {
   public function viewShop(Request $request){
     $products = Product::all();
+    $shoppingCarts =null;
+    if (Auth::check()) {
+      $shoppingCarts = shoppingCart::where('user_id',Auth::user()->id)->get();
+    }
+    $shoppingCartLines =null;
+    $total_products = null;
+
+    if (Auth::check() && !$shoppingCarts->isEmpty()){
+
+      $shopping_cart_id = $shoppingCarts[0]->id;
+      $shoppingCartLines = Shopping_Cart_Line::where('shopping_cart_id',$shopping_cart_id)->get();
+      $total_products = $shoppingCartLines->sum('units');
+    }
     return view('online_shop')
-    ->with('product_list',$products);
+    ->with('product_list',$products)
+    ->with('shoppingCarts',$shoppingCarts)
+    ->with('total_products',$total_products);
 
   }
 
   public function viewProduct($id){
-    if (Auth::check()) {
+
     $product=Product::where('id', $id)->first();
-    $shoppingCarts = shoppingCart::where('user_id',Auth::user()->id)->get();
+    $shoppingCarts =null;
+    if (Auth::check()) {
+      $shoppingCarts = shoppingCart::where('user_id',Auth::user()->id)->get();
+    }
     $shoppingCartLines =null;
     $total_products = null;
 
-    if (!$shoppingCarts->isEmpty()){
+    if (Auth::check() && !$shoppingCarts->isEmpty()){
+
       $shopping_cart_id = $shoppingCarts[0]->id;
       $shoppingCartLines = Shopping_Cart_Line::where('shopping_cart_id',$shopping_cart_id)->get();
       $total_products = $shoppingCartLines->sum('units');
@@ -34,18 +53,24 @@ class shoppingCartController extends Controller
     ->with('product',$product)
     ->with('shoppingCarts',$shoppingCarts)
     ->with('total_products',$total_products);
-  }else{
-    return redirect()->guest('/login');
-  }
+
   }
 
   public function viewCart($id){
-    $shoppingCartLines = Shopping_Cart_Line::where('shopping_cart_id',$id)->get();
-    $total_price = $shoppingCartLines->sum('total_line_price');
-    return view('shopping_cart')
-    ->with('shoppingCartLines',$shoppingCartLines)
-    ->with('total_price',$total_price);
-
+    if (Auth::check()) {
+        $shoppingCart = shoppingCart::where('id',$id)->get();
+        if (!$shoppingCart->isEmpty() && $shoppingCart[0]->user_id == Auth::user()->id){
+          $shoppingCartLines = Shopping_Cart_Line::where('shopping_cart_id',$id)->get();
+          $total_price = $shoppingCartLines->sum('total_line_price');
+          return view('shopping_cart')
+          ->with('shoppingCartLines',$shoppingCartLines)
+          ->with('total_price',$total_price);
+        }else{
+            return "Not allowed";
+        }
+    }else{
+        return redirect()->guest('/login');
+    }
   }
 
 
@@ -56,7 +81,12 @@ class shoppingCartController extends Controller
           $shoppingCarts = shoppingCart::where('user_id',Auth::user()->id)->get();
           $product=Product::where('id', $request->input('id'))->first();
 
+
           if ($shoppingCarts->isEmpty()){
+
+            if ($request->input('stock_units') > $product->stock){
+              return "NOSTOCK";
+            }
 
             $new_shoppingCart=shoppingCart::create([
               'user_id' => Auth::user()->id
@@ -78,6 +108,12 @@ class shoppingCartController extends Controller
             return "The new shopping Cart ID is ".$new_shoppingCart->id;
           }else{
 
+            $shopping_cart_stock=Shopping_Cart_Line::where('shopping_cart_id',$shoppingCarts[0]->id)->get()->sum('units');
+
+            if ($request->input('stock_units') + $shopping_cart_stock  > $product->stock){
+              return "NOSTOCK";
+            }
+
             Shopping_Cart_Line::create([
                 'shopping_cart_id' => $shoppingCarts[0]->id,
                 'product_id' => $request->input('id'),
@@ -95,7 +131,7 @@ class shoppingCartController extends Controller
 
 
     }else{
-      return "User not logged in";
+      return "NOLIN";
     }
 
   }
