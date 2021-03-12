@@ -6,6 +6,7 @@ use Request;
 
 
 use App\Models\Link;
+use Illuminate\Support\Facades\Auth;
 
 class LinksController extends Controller
 {
@@ -13,14 +14,18 @@ class LinksController extends Controller
 
 
   public function ListLinks($id) {
-    $links = Link::where(['artist_id' => $id])->pluck('link');
+    if (Auth::check() && Auth::user()->admin==true){
+    $links = Link::where(['artist_id' => $id])->get();
     return view('links')
     ->with('links',$links)
     ->with('artist_id',$id);
+  }else{
+    return "Not allowed";
+  }
   }
 
   public function newLink() {
-      if (Auth::user()->admin==true){
+      if (Auth::check() && Auth::user()->admin==true){
       $newlink = Request::get('newlink', '');
       $artist_id = Request::get('artist_id', 0);
       //  Store data in database
@@ -37,6 +42,20 @@ class LinksController extends Controller
           return "Not allowed";
         }
       //
+
+  }
+
+  public function delete($id){
+
+    if (Auth::check() && Auth::user()->admin==true){
+
+      Link::destroy($id);
+
+
+      return back()->with('success', 'You have successfully deleted a link');
+    }else{
+      return "Not allowed";
+    }
 
   }
 

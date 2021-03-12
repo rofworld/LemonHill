@@ -20,9 +20,9 @@
      @endforeach
      <hr>
     </div>
-    @if (Auth::check() && !$shoppingCarts->isEmpty())
+    @if ($shoppingCart)
       <div class="form-group">
-    		<em><a class="viewCartButton" style="width:100%;" href="{{ url('/shoppingCart/'.$shoppingCarts[0]->id)}}">View Shopping Cart ( {{$total_products}} )</a></em>
+    		<em><a class="viewCartButton" style="width:100%;" href="{{ url('/shoppingCart')}}">View Shopping Cart ( {{$total_products}} )</a></em>
       </div>
     @endif
   <script src="{{ asset('js/product_view_logic.js') }}" type="text/javascript"></script>

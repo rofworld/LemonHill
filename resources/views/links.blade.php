@@ -16,8 +16,8 @@
   <ul class="list-group">
     @foreach($links as $link)
       <li class="list-group-item">
-        {{ $link }}
-        <a href="" class="btn btn-dark btn-link-delete">Delete</a>
+        {{ $link->link }}
+        <a href="{{url('/links/delete/'.$link->id)}}" class="btn btn-dark btn-link-delete">Delete</a>
       </li>
     @endforeach
   </ul>

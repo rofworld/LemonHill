@@ -44,6 +44,7 @@
 						<img src="/images/descarga.jpg" alt="Lemon Hill Logo" class="image-logo"><b>Lemon Hill</b>
 					</a>
           <a href="{{ url('/artist_info')}}" title="Artist Info" style="margin-left:150px;">Artist Info</a>
+          <a href="{{ url('/events_info')}}" title="Events Info">Events Info</a>
           <a href="{{ url('/onlineShop')}}" title="Online Shop">Online Shop</a>
           @guest
 
@@ -83,6 +84,7 @@
         <a href="/product_creation_form" title="Create Product">Create Product</a>
         <a href="/artist_info_admin" title="Create Artist">Create Artist</a>
         <a href="/list_orders" title="Orders">Orders</a>
+        <a href="/create_event" title="Orders">Create Event</a>
        </div>
        </nav>
        <hr>

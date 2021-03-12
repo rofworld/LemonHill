@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Auth::routes();
@@ -36,6 +36,7 @@ Route::get('/product_list_admin', [App\Http\Controllers\ProductAdminController::
 
 
 Route::get('/artist_info', [App\Http\Controllers\ArtistInfoController::class, 'ListArtists']);
+Route::get('/artist_info/view/{id}', [App\Http\Controllers\ArtistInfoController::class, 'viewArtist']);
 
 Route::get('/artist_info/delete/{id}', [App\Http\Controllers\ArtistInfoAdminController::class,'delete']);
 
@@ -43,18 +44,34 @@ Route::get('/artist_info/delete/{id}', [App\Http\Controllers\ArtistInfoAdminCont
 
 Route::get('/links/list/{id}', [App\Http\Controllers\LinksController::class,'ListLinks']);
 Route::get('/links/newlink', [App\Http\Controllers\LinksController::class,'newLink'])->name('link.store');
+Route::get('/links/delete/{id}',[App\Http\Controllers\LinksController::class,'delete']);
 
 
 Route::get('/onlineShop',[App\Http\Controllers\shoppingCartController::class,'viewShop']);
 Route::get('/product_view/{id}',[App\Http\Controllers\shoppingCartController::class,'viewProduct']);
 Route::post('/product_view/addToCart',[App\Http\Controllers\shoppingCartController::class,'addToCart']);
-Route::get('/shoppingCart/{id}',[App\Http\Controllers\shoppingCartController::class,'viewCart']);
+Route::get('/shoppingCart',[App\Http\Controllers\shoppingCartController::class,'viewCart']);
 
 
-Route::get('/checkout/{id}',[App\Http\Controllers\PaymentController::class,'paymentDetails'] );
+Route::get('/checkout',[App\Http\Controllers\PaymentController::class,'paymentDetails'] );
 Route::post('/checkout/pay',[App\Http\Controllers\PaymentController::class,'pay'] );
 
 
 Route::get('/list_orders',[App\Http\Controllers\OrderController::class,'list'] );
 Route::post('list_orders/markAsSent',[App\Http\Controllers\OrderController::class,'markAsSent'] );
 Route::get('/orders/view/{id}',[App\Http\Controllers\OrderController::class,'viewOrder'] );
+
+
+Route::get('auth/facebook', [App\Http\Controllers\SocialController::class, 'facebookRedirect']);
+Route::get('auth/facebook/callback', [App\Http\Controllers\SocialController::class, 'loginWithFacebook']);
+
+Route::get('/create_event', [App\Http\Controllers\EventsController::class, 'createForm']);
+Route::post('/create_event', [App\Http\Controllers\EventsController::class, 'storeEvent'])->name('event.store');
+Route::get('/events_info', [App\Http\Controllers\EventsController::class, 'ListEvents']);
+Route::get('/events_info/delete/{id}', [App\Http\Controllers\EventsController::class, 'deleteEvent']);
+Route::get('/events_info/view/{id}', [App\Http\Controllers\EventsController::class, 'viewEvent']);
+Route::post('/events_info/search', [App\Http\Controllers\EventsController::class, 'searchEvent'])->name('event.search');;
+
+Route::get('/eventArtists/list/{id}',[App\Http\Controllers\eventArtistsController::class, 'listEventArtists'] );
+Route::get('/eventArtists/delete/{id}',[App\Http\Controllers\eventArtistsController::class,'delete']);
+Route::get('/eventArtists/store', [App\Http\Controllers\eventArtistsController::class,'newArtist'])->name('eventArtist.store');

@@ -13,7 +13,7 @@
 </div>
   <h3 style="margin-left:15%;"><u>Payment Details</u></h3>
   <div class="payment-details">
-                        <input id="shoppingCartId" type="text" value="{{$shoppingCartId}}" hidden>
+            
                         <input id="total_price" type="text" value="{{$total_price}}" hidden>
                         <label style="margin-left:15%;">Datos de envio</label>
                         <div id="form-send-data">

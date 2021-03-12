@@ -15,18 +15,19 @@ use App\Models\Product;
 class PaymentController extends Controller
 {
 
-  public function paymentDetails($id){
+  public function paymentDetails(Request $request){
 
-    $shoppingCart = shoppingCart::find($id);
+    if (session('shoppingCart')){
 
-    if (Auth::id() == $shoppingCart->user_id){
+      $shoppingCart = session('shoppingCart');
+      $shoppingCartLines = $shoppingCart['lines'];
 
-      $shoppingCartLines = Shopping_Cart_Line::where('shopping_cart_id',$id)->get();
-
-      $total_price = $shoppingCartLines->sum('total_line_price');
+      $total_price = 0;
+      foreach ($shoppingCartLines as $line){
+        $total_price+=$line['total_line_price'];
+      }
 
       return view('paymentDetails')
-      ->with('shoppingCartId',$id)
       ->with('total_price',$total_price);
 
   }else{
@@ -35,9 +36,11 @@ class PaymentController extends Controller
   }
 
   public function pay(Request $request) {
-    $shoppingCart = shoppingCart::find($request->input('shoppingCartId'));
-    if (empty($shoppingCart)){
-      return "NOSC";
+    if (session('shoppingCart')){
+    $shoppingCart = session('shoppingCart');
+    $user_id=null;
+    if (Auth::check()){
+      $user_id = Auth::user()->id;
     }
     try{
     Stripe::setApiKey(config('services.stripe.secret'));
@@ -50,7 +53,7 @@ class PaymentController extends Controller
         ]);
 
         $new_order=Order::create([
-          'user_id' => Auth::user()->id,
+          'user_id' => $user_id,
           'send_name' => $request->input('send_name'),
           'send_address'=>$request->input('address'),
           'postal_code'=>$request->input('cp'),
@@ -61,32 +64,41 @@ class PaymentController extends Controller
           'sent' => false
         ]);
 
-        $shoppingCartLines = Shopping_Cart_Line::where('shopping_cart_id',$request->input('shoppingCartId'))->get();
+        $shoppingCartLines = $shoppingCart['lines'];
 
         foreach ($shoppingCartLines as $line) {
           Order_line::create([
               'order_id' => $new_order->id,
-              'product_id' => $line->product_id,
-              'product_name' =>  $line->product_name,
-              'units' =>  $line->units,
-              'unit_price' =>  $line->unit_price,
-              'total_line_price' =>  $line->total_line_price
+              'product_id' => $line['product_id'],
+              'product_name' =>  $line['product_name'],
+              'units' =>  $line['units'],
+              'unit_price' =>  $line['unit_price'],
+              'total_line_price' =>  $line['total_line_price']
 
           ]);
 
           //Update product stock
-          $product = Product::find($line->product_id);
-          $stock=$product->stock - intval($line->units);
-          Product::where('id',$line->product_id)->update(['stock' => $stock]);
+          $product = Product::find($line['product_id']);
+          if ($stock>0){
+            $stock=$product->stock - intval($line['units']);
+          }else{
+            $stock=0;
+          }
+          Product::where('id',$line['product_id'])->update(['stock' => $stock]);
         }
 
-        Shopping_Cart_Line::where('shopping_cart_id', $request->input('shoppingCartId'))->delete();
-        shoppingCart::destroy($request->input('shoppingCartId'));
+        session()->forget('shoppingCart');
+        session()->flush();
+
 
       return 'success';
     } catch (\Exception $ex) {
         return $ex->getMessage();
     }
+
+  }else{
+    return "NOSC";
+  }
 
 }
 

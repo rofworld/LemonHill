@@ -24,10 +24,10 @@
        @foreach ($shoppingCartLines as $line)
 
        <tr>
-         <td>{{$line->product_name}}</td>
-         <td>{{$line->unit_price}}</td>
-         <td>{{$line->units}}</td>
-         <td>{{$line->total_line_price}}</td>
+         <td>{{$line['product_name']}}</td>
+         <td>{{$line['unit_price']}}</td>
+         <td>{{$line['units']}}</td>
+         <td>{{ $line['total_line_price'] }}</td>
        </tr>
        @endforeach
      </tbody>
@@ -38,7 +38,7 @@
     </div>
     <hr>
     <div>
-  		<em><a id="checkoutButton" title="Checkout Button" href="{{ url('/checkout/'.$line->shopping_cart_id)}}">Checkout ({{ $total_price }} €)</a></em>
+  		<em><a id="checkoutButton" title="Checkout Button" href="{{ url('/checkout')}}">Checkout ({{ $total_price }} €)</a></em>
     </div>
 
 

@@ -43,6 +43,8 @@ $('#addToCartButton').click(function () {
       $('#status').append('<div class="alert alert-warning">' + "Not Logged In. Please Log in or Register" + '</div>');
       window.scrollTo(0,0);
     }else{
+      //console.log(response);
+      //console.log(textStatus);
       location.reload();
     }
 

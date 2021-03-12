@@ -102,12 +102,15 @@ class ProductAdminController extends Controller
 
 
   public function listProducts(Request $request){
+    if (Auth::check() && Auth::user()->admin==true){
+      $products = Product::all();
 
-    $products = Product::all();
 
-
-    return view('product_list')
-    ->with('product_list',$products);
+      return view('product_list')
+      ->with('product_list',$products);
+    }else{
+      return "Not allowed";
+    }
   }
 
   public function delete($id){

@@ -20,7 +20,7 @@
   @foreach ($artist_info_list as $artist)
   	<article>
   		<h3>{{$artist->name}}</h3>
-  		<div><img src="storage/{{ $artist->image_url }}">{{$artist->description}}</div>
+  		<div><img src="/storage/{{ $artist->image_url }}">{{$artist->description}}</div>
 
       <details>
         <summary>Links</summary>

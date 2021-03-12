@@ -645,7 +645,8 @@ em a,
 em label,
 em button,
 em div a {
-	border: 1px solid currentColor;
+	border: 2px solid var(--color-lemongreen) !important;
+	color: var(--color-lemongreen) !important;
 	cursor: pointer;
 	display: inline;
 	display: inline-block;
@@ -857,7 +858,7 @@ dialog > div,
 section > div {
 	border: thin solid transparent;
 	clear: both;
-	padding: 30px 0 15px;
+	padding: 25px 0 15px;
 	position: relative;
 }
 header {
@@ -1221,6 +1222,8 @@ a:visited:active {
 	--color-blue: rgba(23,148,227,1);
 	--color-turquoise: rgba(122,172,172,1);
 	--color-green: rgba(80,200,120,1);
+	--color-lemon: rgba(255,255,174,1);
+	--color-lemongreen: rgba(89,186,37,1);
 
 	/* B & W */
 	--color-white: rgba(255,255,255,1);

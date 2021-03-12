@@ -63,7 +63,7 @@
                 }
               });
               request = $.ajax({
-                url: "pay",
+                url: "/checkout/pay",
                 type: "POST",
                 data: params
               }); // Callback handler that will be called on success

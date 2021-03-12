@@ -1,6 +1,30 @@
+body{
+  background-color: var(--color-lemon);
+  color: var(--color-softblack);
+
+}
+#site-nav{
+  background-color: var(--color-yellow);
+  border: 0px;
+
+}
+
+#site-nav a{
+  color: var(--color-lemon) !important;
+  font-weight: bold;
+
+}
 
 #page-nav{
-  border-top: 1px solid currentColor;
+  background-color: var(--color-yellow);
+  border: 0px;
+
+}
+
+#page-nav a{
+  color: var(--color-lemon) !important;
+  font-weight: bold;
+
 }
 
 .site-logo{
@@ -15,7 +39,7 @@
 .container {
     margin-left: 50px;
     text-align: justify;
-    color: var(--color-softblack);
+
 }
 
 .gallery article h3{

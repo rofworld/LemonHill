@@ -24,7 +24,8 @@ class User extends Authenticatable
         'postal_code',
         'provincia',
         'country',
-        'admin'
+        'admin',
+        'fb_id'
     ];
 
     /**

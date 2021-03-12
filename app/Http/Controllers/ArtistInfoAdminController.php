@@ -12,7 +12,7 @@ class ArtistInfoAdminController extends Controller
 {
   // Create Contact Form
   public function createForm(Request $request) {
-    if (Auth::user()->admin==true){
+    if (Auth::check() && Auth::user()->admin==true){
       return view('artist_info_admin');
     }else{
       return "Not allowed";
@@ -52,7 +52,7 @@ class ArtistInfoAdminController extends Controller
   }
 
   public function delete($id){
-    if (Auth::user()->admin==true){
+    if (Auth::check() && Auth::user()->admin==true){
       try {
         ArtistInfo::destroy($id);
         return back()->with('success', 'You have successfully deleted an Artist');
