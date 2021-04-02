@@ -1,7 +1,7 @@
 
 
 .form-control{
-  border-color: var(--color-blue);
+  border-color: var(--color-lemongreen);
   width:70%;
   left:15%;
   right: 15%;
@@ -14,11 +14,11 @@
   left:15%;
   right: 15%;
   height: 40px;
-  margin-top: 20px;
-  background-color: var(--color-blue);
-  color: var(--color-white);
+  margin-top: 10px;
+  background-color: var(--color-lemon);
+  color: var(--color-lemongreen);
   border-radius: 25px;
-  border-color: var(--color-blue);
+  border-color: var(--color-lemongreen);
   outline:none;
 }
 
@@ -38,15 +38,15 @@
 
 }
 
-.facebook-login-icon{
-  width:50px;
-  height:50px;
-  
-}
-
-.facebook-login-div{
-  margin-left:15%;
-  margin-top: 10px;
-  margin-right: 15%;
-  float:right;
+.facebook-login-button{
+  width:70%;
+  margin-left: 15%;
+  padding-top: 0px;
+  height: 40px;
+  background-color: var(--color-facebook);
+  color: var(--color-white) !important;
+  font-weight: bold;
+  border-radius: 25px;
+  border-color: var(--color-facebook) !important;
+  outline:none;
 }

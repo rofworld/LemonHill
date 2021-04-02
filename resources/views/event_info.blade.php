@@ -36,7 +36,7 @@
             <input type="text" style="height:50px;" name="event_city">
 
 
-          <input type="submit" name="send" value="Buscar" class="btn btn-dark btn-block">
+          <input type="submit" name="send" value="Buscar" class="btn btn-dark btn-search">
 
       </div>
       </form>
@@ -70,4 +70,5 @@
 
   @endforeach
 </div>
+{{$events->links()}}
 @endsection

@@ -41,9 +41,10 @@
           <strong><label for="mobnav"><span class="symbol-list"></span><mark></mark></label></strong>
           <div hidden="">
 					<a class="site-logo" href="http://acozar.github.io/bcncss/" title="Lemon Hill">
-						<img src="/images/descarga.jpg" alt="Lemon Hill Logo" class="image-logo"><b>Lemon Hill</b>
+						<img src="/images/logo.jpg" alt="Lemon Hill Logo" class="image-logo"><b>Lemon Hill</b>
 					</a>
-          <a href="{{ url('/artist_info')}}" title="Artist Info" style="margin-left:150px;">Artist Info</a>
+          <a href="{{ url('/home')}}" title="Home" style="margin-left:150px;">Home</a>
+          <a href="{{ url('/artist_info')}}" title="Artist Info">Artist Info</a>
           <a href="{{ url('/events_info')}}" title="Events Info">Events Info</a>
           <a href="{{ url('/onlineShop')}}" title="Online Shop">Online Shop</a>
           @guest
@@ -78,6 +79,7 @@
 			</nav>
       <hr>
       @if (Auth::check() && Auth::user()->admin==true)
+
       <nav id="page-nav" class="nav-scroll">
       <div>
         <a href="/product_list_admin" title="Product List">Product List</a>
@@ -94,4 +96,21 @@
 </main>
 
 </body>
+<footer id="page-footer">
+
+    <div class="footer_label">
+      <label>Siguenos en: </label>
+    </div>
+
+      <a href="http://facebook.com"><img src="/images/logo_facebook.png" alt="Facebook" class="icons" ></a>
+      <a href="http://www.instagram.com"><img src="/images/icono_instagram.png" alt="Instagram" class="icons"></a>
+
+    <div id="author">
+      <label>Creada por Ricardo Belmonte</label>
+    </div>
+    <div class="footer_label">
+      <label>Basada en Barcelona CSS y Laravel</label>
+    </div>
+
+</footer>
 </html>

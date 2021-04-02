@@ -51,9 +51,9 @@
                             </a>
                         </div>
                         @endif
-                        <div class="facebook-login-div">
-                          <a href="{{ url('auth/facebook') }}"><img src="/images/logo_facebook.png" alt="Facebook" class="facebook-login-icon" >Login with facebook</a>
-                        </div>
+                          <div style="margin-top:10px;">
+                          <em><a href="{{ url('auth/facebook') }}" class="facebook-login-button">Login with facebook</a></em>
+                          </div>
 
                                 <div>
                                 <button type="submit" class="btn-submit">

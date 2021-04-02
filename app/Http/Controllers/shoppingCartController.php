@@ -57,10 +57,15 @@ class shoppingCartController extends Controller
         $shoppingCartLines =$shoppingCart['lines'];
         $total_price =0;
         foreach ($shoppingCartLines as $line) {
-          $total_price += $line['total_line_price'];
+            $product=Product::where('id', $line['product_id'])->first();
+            $map_images[$line['id']] = $product->image_url;
+            $map_description[$line['id']] = $product->description;
+            $total_price += $line['total_line_price'];
         }
           return view('shopping_cart')
           ->with('shoppingCartLines',$shoppingCartLines)
+          ->with('map_images',$map_images)
+          ->with('map_description',$map_description)
           ->with('total_price',$total_price);
 
 
@@ -81,6 +86,7 @@ class shoppingCartController extends Controller
             $lines = array();
             $newline = array();
 
+            $newline['id'] = 0;
             $newline['product_id'] = $request->input('id');
             $newline['product_name'] =  $product->name;
             $newline['units'] =  $request->input('stock_units');
@@ -106,6 +112,7 @@ class shoppingCartController extends Controller
             if ($request->input('stock_units') + $stockInShoppingCart > $product->stock){
               return "NOSTOCK";
             }
+            $newline['id'] = count($shoppingCart['lines']);
             $newline['product_id'] = $request->input('id');
             $newline['product_name'] =  $product->name;
             $newline['units'] =  $request->input('stock_units');

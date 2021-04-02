@@ -46,7 +46,7 @@ class EventsController extends Controller
         $eventQuery = $eventQuery->where('city','like','%'.$request->event_city.'%');
     }
 
-    $events =$eventQuery->get();
+    $events =$eventQuery->simplePaginate(10);
     $map_artist_links= array();
     foreach ($events as $event) {
 
@@ -112,7 +112,7 @@ class EventsController extends Controller
 
   public function ListEvents(Request $request) {
 
-    $events = Event::all();
+    $events = Event::simplePaginate(10);
     $map_artist_links= array();
     foreach ($events as $event) {
 

@@ -30,6 +30,14 @@
             @endforeach
           </ul>
     </details>
+    <details>
+      <summary>Eventos Futuros</summary>
+        <ul>
+          @foreach($map_future_events[$artist->id] as $future_event)
+           <li><a href="{{ url('/events_info/view/'. $future_event->event_id) }}">{{ $map_events_name[$future_event->id] }}</a></li>
+          @endforeach
+        </ul>
+    </details>
 
       <div id="artist_admin_buttons" class="artist_admin_buttons">
         <em><a href="{{ url('/artist_info/delete/'. $artist->id) }}" class="btn">Delete</a></em>
@@ -40,4 +48,5 @@
   	<hr>
   @endforeach
 </div>
+{{$artist_info_list->links()}}
 @endsection

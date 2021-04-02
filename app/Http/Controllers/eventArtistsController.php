@@ -14,7 +14,7 @@ class eventArtistsController extends Controller
     if (Auth::check() && Auth::user()->admin==true){
       $eventArtists = EventArtists::where(['event_id' => $id])->get();
       $artists = ArtistInfo::all();
-    
+
       return view('eventArtists')
       ->with('eventArtists',$eventArtists)
       ->with('eventId',$id)
@@ -48,5 +48,20 @@ class eventArtistsController extends Controller
       //
 
   }
+
+  public function delete($id){
+
+    if (Auth::check() && Auth::user()->admin==true){
+
+      EventArtists::destroy($id);
+
+
+      return back()->with('success', 'You have successfully deleted an Artist');
+    }else{
+      return "Not allowed";
+    }
+
+  }
+
 
 }
