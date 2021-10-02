@@ -868,7 +868,7 @@ footer {
 	border-top: thin solid currentColor;
 }
 article, aside {
-	border: thin solid currentColor;
+	/*border: thin solid currentColor;*/
 }
 #site-header > div,
 #page-header > div,

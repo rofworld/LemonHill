@@ -84,6 +84,18 @@
         @endif
     </div>
 
+    <div class="form-group">
+        <label>Sell Point</label>
+        <input type="text" class="form-control {{ $errors->has('sellPoint') ? 'error' : '' }}" name="sellPoint" id="sellPoint">
+
+        <!-- Error -->
+        @if ($errors->has('sellPoint'))
+        <div class="error">
+            {{ $errors->first('sellPoint') }}
+        </div>
+        @endif
+    </div>
+
 
     <div class="form-group">
 

@@ -5,12 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Stripe\Stripe;
 use Stripe\Charge;
+use Stripe\PaymentIntent;
 use Illuminate\Support\Facades\Auth;
 use App\Models\shoppingCart;
 use App\Models\Shopping_Cart_Line;
 use App\Models\Order;
 use App\Models\Order_line;
 use App\Models\Product;
+use App;
+use Mail;
 
 class PaymentController extends Controller
 {
@@ -34,8 +37,30 @@ class PaymentController extends Controller
     return "Not allowed";
   }
   }
+  public function pay(Request $request){
+    try{
+    $amount = $request->input('amount');
 
-  public function pay(Request $request) {
+    $address = $request->input('address');
+    $provincia = $request->input('provincia');
+    $city = $request->input('city');
+    $description = $address." | ".$provincia." | ".$city;
+
+    Stripe::setApiKey(config('services.stripe.secret'));
+
+    $intent = PaymentIntent::create([
+      'amount' => $amount*100,
+      'currency' => 'eur',
+      'payment_method_types' => ['card'],
+      'description' => $description
+    ]);
+
+    return $intent;
+  }catch (Exception $ex){
+    return $ex->getMessage();
+  }
+  }
+  public function confirmPay(Request $request) {
     if (session('shoppingCart')){
     $shoppingCart = session('shoppingCart');
     $user_id=null;
@@ -43,14 +68,6 @@ class PaymentController extends Controller
       $user_id = Auth::user()->id;
     }
     try{
-    Stripe::setApiKey(config('services.stripe.secret'));
-    $token = $request->input('token');
-    $charge = Charge::create([
-          'amount' => $request->input('totalPrice')*100,
-          'currency' => 'eur',
-          'description' => $request->input('address').' | '.$request->input('city').' | '.$request->input('country'),
-          'source' => $token,
-        ]);
 
         $new_order=Order::create([
           'user_id' => $user_id,
@@ -61,7 +78,7 @@ class PaymentController extends Controller
           'provincia'=>$request->input('provincia'),
           'city' =>$request->input('city'),
           'total_price' =>$request->input('totalPrice'),
-          'sent' => false
+          'state' => 4
         ]);
 
         $shoppingCartLines = $shoppingCart['lines'];
@@ -79,20 +96,58 @@ class PaymentController extends Controller
 
           //Update product stock
           $product = Product::find($line['product_id']);
-          if ($stock>0){
-            $stock=$product->stock - intval($line['units']);
-          }else{
+          $stock=$product->stock - intval($line['units']);
+          if ($stock<0){
             $stock=0;
           }
           Product::where('id',$line['product_id'])->update(['stock' => $stock]);
         }
 
+
+
+
+        //Enviar factura por correo
+        if (Auth::check()){
+
+          $order_lines = Order_line::where('order_id',$new_order->id)->get();
+          $subtotal = $order_lines->sum('total_line_price');
+          $gastos_envio = env('GASTOS_ENVIO');
+          $data = [
+            'order_lines' => $order_lines,
+            'order_id' => $new_order->id,
+            'send_name' => $new_order->send_name,
+            'send_address' => $new_order->send_address,
+            'postal_code' => $new_order->postal_code,
+            'city' => $new_order->city,
+            'provincia' => $new_order->provincia,
+            'country' => $new_order->country,
+            'date' => $new_order->created_at->format('Y-m-d'),
+            'subtotal' => $subtotal,
+            'gastos_envio' => $gastos_envio
+          ];
+
+          $pdf = App::make('dompdf.wrapper');
+          $pdf->loadView('pdf.factura',$data);
+
+          $data_mail["email"] = Auth::user()->email;
+          $data_mail["title"] = "Factura de su pedido ".$new_order->id;
+          $data_mail["body"] = "Le enviamos la factura de su pedido ".$new_order->id;
+
+          $order_id = $new_order->id;
+          Mail::send('emails.factura', $data_mail, function($message) use($data_mail, $pdf,$order_id) {
+            $message->to($data_mail["email"])
+                    ->subject($data_mail["title"])
+                    ->attachData($pdf->output(), 'factura_'.$order_id.'.pdf');
+          });
+
+        }
+
         session()->forget('shoppingCart');
         session()->flush();
 
-
       return 'success';
     } catch (\Exception $ex) {
+        //return "ERROR_DURING_ORDER_CREATION";
         return $ex->getMessage();
     }
 

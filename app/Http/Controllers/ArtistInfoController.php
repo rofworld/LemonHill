@@ -38,7 +38,7 @@ class ArtistInfoController extends Controller
     foreach ($events as $event){
       $map_events_name[$event->id] = $event->name;
     }
-    
+
     return view('artist_info')
     ->with('artist_info_list',$artist_info_list)
     ->with('map_artist_links',$map_artist_links)
@@ -47,7 +47,7 @@ class ArtistInfoController extends Controller
   }
 
   public function viewArtist($id){
-    $artist_info_list = ArtistInfo::where('id',$id)->get();
+    $artist_info_list = ArtistInfo::where('id',$id)->Simplepaginate(10);
     $map_artist_links= array();
     $map_future_events = array();
 

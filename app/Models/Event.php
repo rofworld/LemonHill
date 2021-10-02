@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Event extends Model
 {
     use HasFactory;
-    public $fillable =['name','description','event_artists_id','event_date','price','location','city','image_url'];
+    public $fillable =['name','description','event_artists_id','event_date','price','location','city','image_url','sellPoint'];
 }

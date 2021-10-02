@@ -80,7 +80,8 @@ class EventsController extends Controller
         'date' => 'required|date',
         'price' => 'required|numeric',
         'location' => 'required',
-        'city' => 'required'
+        'city' => 'required',
+        'sellPoint' => 'required'
 
      ]);
 
@@ -100,7 +101,8 @@ class EventsController extends Controller
             'price' => $request->price,
             'image_url' => $filePath,
             'location' => $request->location,
-            'city' => $request->city
+            'city' => $request->city,
+            'sellPoint' => $request->sellPoint
           ]);
       }
 

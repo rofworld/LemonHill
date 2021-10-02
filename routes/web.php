@@ -24,7 +24,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/artist_info_admin', [App\Http\Controllers\ArtistInfoAdminController::class, 'createForm']);
 Route::post('/artist_info_admin', [App\Http\Controllers\ArtistInfoAdminController::class, 'ArtistInfoForm'])->name('artist.store');
 
-
+Route::get('/product/hide/{id}', [App\Http\Controllers\ProductAdminController::class, 'hide']);
 Route::get('/product_creation_form', [App\Http\Controllers\ProductAdminController::class, 'createForm']);
 Route::get('/product_edit_form/{id}', [App\Http\Controllers\ProductAdminController::class, 'editForm']);
 Route::get('/product/delete/{id}', [App\Http\Controllers\ProductAdminController::class, 'delete']);
@@ -51,15 +51,21 @@ Route::get('/onlineShop',[App\Http\Controllers\shoppingCartController::class,'vi
 Route::get('/product_view/{id}',[App\Http\Controllers\shoppingCartController::class,'viewProduct']);
 Route::post('/product_view/addToCart',[App\Http\Controllers\shoppingCartController::class,'addToCart']);
 Route::get('/shoppingCart',[App\Http\Controllers\shoppingCartController::class,'viewCart']);
-
+Route::get('/delete_shopping_cart',[App\Http\Controllers\shoppingCartController::class,'deleteShoppingCart'] );
 
 Route::get('/checkout',[App\Http\Controllers\PaymentController::class,'paymentDetails'] );
 Route::post('/checkout/pay',[App\Http\Controllers\PaymentController::class,'pay'] );
+Route::post('/checkout/confirmPay',[App\Http\Controllers\PaymentController::class,'confirmPay'] );
+
+
 
 
 Route::get('/list_orders',[App\Http\Controllers\OrderController::class,'list'] );
-Route::post('list_orders/markAsSent',[App\Http\Controllers\OrderController::class,'markAsSent'] );
+Route::post('/list_orders/markAsComplete',[App\Http\Controllers\OrderController::class,'markAsComplete'] );
+Route::post('/list_orders/markAsRefused',[App\Http\Controllers\OrderController::class,'markAsRefused'] );
 Route::get('/orders/view/{id}',[App\Http\Controllers\OrderController::class,'viewOrder'] );
+Route::get('/orders/printToPdf/{id}',[App\Http\Controllers\OrderController::class,'printToPdf'])->name('orders.printToPdf');
+Route::get('/orders/printFactura/{id}',[App\Http\Controllers\OrderController::class,'printFactura'])->name('factura.printToPdf');
 
 
 Route::get('auth/facebook', [App\Http\Controllers\SocialController::class, 'facebookRedirect']);

@@ -55,7 +55,8 @@ class ProductAdminController extends Controller
               'description' => $request->description,
               'stock' => $request->stock,
               'price' => $request->price,
-              'image_url' => $filePath
+              'image_url' => $filePath,
+              'hidden' => false
             ]);
         }
 
@@ -130,5 +131,23 @@ class ProductAdminController extends Controller
       ['stock' => $request->stock]
     );
     return back()->with('success', 'You have successfully updated the stock');
+  }
+
+  public function hide($id){
+    if (Auth::check() && Auth::user()->admin==true){
+      $product = Product::find($id);
+      $hidden = $product->hidden ? false : true;
+      $product->update([
+        'hidden' => $hidden
+      ]);
+
+      if ($hidden){
+        return back()->with('success', 'You have successfully hide the product');
+      }else{
+        return back()->with('success', 'You have successfully unhide the product');
+      }
+    }else{
+      return "Not allowed";
+    }
   }
 }

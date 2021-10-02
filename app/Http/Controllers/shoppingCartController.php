@@ -10,7 +10,7 @@ use App\Models\Product;
 class shoppingCartController extends Controller
 {
   public function viewShop(Request $request){
-    $products = Product::all();
+    $products = Product::where('hidden',false)->where('stock','>','0')->get();
     $shoppingCart = null;
     $total_products = null;
     if (session('shoppingCart')) {
@@ -125,5 +125,10 @@ class shoppingCartController extends Controller
 
 
 
+  }
+  public function deleteShoppingCart(){
+    session()->forget('shoppingCart');
+    session()->flush();
+    return view('home')->with('success', 'Eliminaste correctamente el carrito');
   }
 }

@@ -1,8 +1,12 @@
 @extends('layouts.app')
 
 <head>
-  <link rel="stylesheet" type="text/css" href="{{ asset('css/style_payment.css') }}"/>
-  <script src="https://js.stripe.com/v2/"></script>
+  @if ((new \Jenssegers\Agent\Agent())->isDesktop())
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/style_payment.css') }}"/>
+  @else
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/style_payment_mobile.css') }}"/>
+  @endif
+  <script src="https://js.stripe.com/v3/"></script>
 </head>
 
 
@@ -13,8 +17,8 @@
 </div>
   <h3 style="margin-left:15%;"><u>Payment Details</u></h3>
   <div class="payment-details">
-            
-                        <input id="total_price" type="text" value="{{$total_price}}" hidden>
+
+                        <input id="total_price" type="text" value="{{$total_price + env('GASTOS_ENVIO')}}" hidden>
                         <label style="margin-left:15%;">Datos de envio</label>
                         <div id="form-send-data">
                         <div class="form-group">
@@ -82,41 +86,19 @@
                       </div>
                       <label style="margin-left:15%;">Datos de pago</label>
                       <div id="form-payment-data">
-                        <div class="form-group">
-                          <div>
-                          <label for="ccn" class="form-control">Credit Card Number:</label>
-                          </div>
-                          <div>
-                          <input id="ccn" class="form-control-ccn" type="text" maxlength="19" placeholder="xxxxxxxxxxxxxxxx" required>
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <div>
-                          <label for="expiry_month" class="form-control">{{ __('Expiry Month') }}</label>
-                          </div>
-                          <div>
-                          <input id="expiry_month" class="form-control-expiry-month" type="text" required>
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <div>
-                          <label for="expiry_year" class="form-control">{{ __('Expiry Year') }}</label>
-                          </div>
-                          <div>
-                          <input id="expiry_year" class="form-control-expiry-year" type="text" required>
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <div>
-                          <label for="cvc" class="form-control">{{ __('CVC') }}</label>
-                          </div>
-                          <div>
-                          <input id="cvc" class="form-control-cvc" type="text" required>
-                          </div>
-                        </div>
+                        <label for="card-element">
+                        Tarjeta de credito o debito
+                      </label>
+                      <div id="card-element" style="margin-top:10px;">
+                        <!-- a Stripe Element will be inserted here. -->
+                      </div>
+
+                      <!-- Used to display form errors -->
+                      <div id="card-errors" role="alert"></div>
+                      </div>
                       </div>
                       <em><button id="btn-submit" class="btn-submit">
-                                    Pay ( {{$total_price}} € )
+                                    Pay ( {{$total_price + env('GASTOS_ENVIO')}} € )
                       </button></em>
 
   <script src="{{ asset('js/client.js') }}" type="text/javascript"></script>

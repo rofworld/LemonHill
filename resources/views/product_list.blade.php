@@ -32,6 +32,9 @@
 		</article>
 
     <div id="product_list_buttons" class="product_list_buttons">
+      <em><a href="{{ url('/product/hide/'. $product->id) }}">
+        {{$product->hidden ? 'Hidden' : 'Hide' }}
+      </a></em>
       <em><a href="{{ url('/product/delete/'. $product->id) }}">Delete</a></em>
       <em><a href="{{ url('/product_edit_form/'. $product->id) }}">Edit</a></em>
       <em><label for="modal-one-{{$product->id}}" class="stock_button">Stock {{$product->stock}}</label></em>

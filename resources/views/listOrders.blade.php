@@ -40,25 +40,42 @@
      </tbody>
     </table>
 
-
-
-      <em><label for="modal-one" class="pull-right buttons">Mark as Sent</label></em>
-      <div>
-	       <input id="modal-one" type="checkbox" hidden>
-	        <dialog>
-		          <header>
-			             <h3>Alert</h3>
-                   <label>Are you sure you want to mark those orders as sent?</label>
-		          </header>
+    <em><label for="modal-one" class="pull-right buttons" style="margin-bottom:20px;">Marcar como Completado</label></em>
+    <div>
+       <input id="modal-one" type="checkbox" hidden>
+        <dialog>
+            <header>
+                 <h3>Alerta</h3>
+                 <label>Seguro que quieres marcar estos pedidos como completados?</label>
+            </header>
 
 
 
-                  <em><button id="markAsSentButton" class="button-dark btn-block">Mark as Sent</button></em>
-                  <nav>
-              			<label for="modal-one">Close</label>
-              		</nav>
-	           </dialog>
-      </div>
+                <em><button id="markAsCompleteButton" class="button-dark btn-block">Completar</button></em>
+                <nav>
+                  <label for="modal-one">Close</label>
+                </nav>
+           </dialog>
+    </div>
+    <em><label for="modal-two" class="pull-right buttons" style="margin-right:20px; margin-bottom:20px;">Marcar como Rechazado</label></em>
+    <div>
+       <input id="modal-two" type="checkbox" hidden>
+        <dialog>
+            <header>
+                 <h3>Alerta</h3>
+                 <label>Seguro que quieres marcar estos pedidos como rechazados?</label>
+            </header>
+
+
+
+                <em><button id="markAsRefusedButton" class="button-dark btn-block">Rechazar</button></em>
+                <nav>
+                  <label for="modal-two">Close</label>
+                </nav>
+           </dialog>
+    </div>
+
+
 
     <script src="{{ asset('js/orders.js') }}" type="text/javascript"></script>
     </div>

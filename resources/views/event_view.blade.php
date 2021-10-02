@@ -44,7 +44,15 @@
             <dd>{{$event->city}}</dd>
           </dl>
         </section>
-
+      </div>
+      <div class="flex-grid-3">
+  	     <section class="panel">
+           <dl>
+             <dt>Punto de venta</dt>
+             <dd><a href="{{$event->sellPoint}}">{{$event->sellPoint}}</a></dd>
+           </dl>
+         </section>
+       </div>
 
 
 

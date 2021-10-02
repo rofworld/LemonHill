@@ -1,6 +1,7 @@
 
-#checkoutButton{
+#checkoutButton, #deleteButton{
   width: 100%;
+  margin-top: 10px;
 }
 
 .total_price{

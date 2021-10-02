@@ -3,6 +3,11 @@
 @section('content')
 
 <div class="container">
+  @isset($success)
+      <div class="alert alert-success">
+          {{ $success }}
+      </div>
+    @endisset
   <img src="/images/portada.jpg" id="foto-portada">
   <div>
           <div class="flex-grid-2">
