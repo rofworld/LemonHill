@@ -13,7 +13,15 @@
 <form  method="post" action="{{ route('product.store') }}" enctype="multipart/form-data">
 
     @csrf
-
+    @if (count($errors) > 0)
+          <div class="alert alert-danger">
+              <ul>
+                  @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                  @endforeach
+              </ul>
+          </div>
+    @endif
     <div class="form-group">
         <label>Name</label>
         <input type="text" class="form-control {{ $errors->has('name') ? 'error' : '' }}" name="name" id="name">
@@ -38,15 +46,12 @@
     </div>
 
     <div class="form-group">
-        <label>Stock</label>
-        <input type="text" class="form-control {{ $errors->has('stock') ? 'error' : '' }}" name="stock" id="stock">
-
-        <!-- Error -->
-        @if ($errors->has('stock'))
-        <div class="error">
-            {{ $errors->first('stock') }}
-        </div>
-        @endif
+        <label>Categoria</label>
+        <strong><select name="category_id" id="category_id">
+          @foreach ($categories as $category)
+            <option value="{{$category->id}}">{{$category->name}}</option>
+          @endforeach
+        </select></strong>
     </div>
 
     <div class="form-group">
@@ -64,15 +69,6 @@
 
     <div class="form-group">
 
-      @if (count($errors) > 0)
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                      <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-          @endif
           <label>Choose Image File:</label>
           <input type="file" id="file" name="file" style="display: none;" />
           <input type="button" value="Browse..." onclick="document.getElementById('file').click();" />

@@ -98,7 +98,7 @@
                       </div>
                       </div>
                       <em><button id="btn-submit" class="btn-submit">
-                                    Pay ( {{$total_price + env('GASTOS_ENVIO')}} € )
+                                    Pagar ( {{$total_price + env('GASTOS_ENVIO')}} € )
                       </button></em>
 
   <script src="{{ asset('js/client.js') }}" type="text/javascript"></script>

@@ -48,6 +48,7 @@ Route::get('/links/delete/{id}',[App\Http\Controllers\LinksController::class,'de
 
 
 Route::get('/onlineShop',[App\Http\Controllers\shoppingCartController::class,'viewShop']);
+Route::get('/onlineShop/{id}',[App\Http\Controllers\shoppingCartController::class,'viewCategory']);
 Route::get('/product_view/{id}',[App\Http\Controllers\shoppingCartController::class,'viewProduct']);
 Route::post('/product_view/addToCart',[App\Http\Controllers\shoppingCartController::class,'addToCart']);
 Route::get('/shoppingCart',[App\Http\Controllers\shoppingCartController::class,'viewCart']);

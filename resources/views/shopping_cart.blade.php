@@ -23,7 +23,7 @@
             <img src="/storage/{{$map_images[$line['id']]}}" alt="{{$line['product_name']}}" class="product-frame">
           </div>
           <div class="product-details">
-            <p>{{$line['product_name']}}</p>
+            <p>{{$line['product_name']}} {{$line['size'] ? ' - Talla '.$line['size_name'] : '' }}</p>
           </div>
         </div>
         <div class="price">{{$line['unit_price']}}</div>
@@ -55,7 +55,7 @@
   <hr>
   <div>
     <em><a id="deleteButton" title="Borrar Carrito" href="{{ url('/delete_shopping_cart')}}">Borrar Carrito</a></em>
-    <em><a id="checkoutButton" title="Checkout Button" href="{{ url('/checkout')}}">Checkout ({{ $total_price + env('GASTOS_ENVIO') }} €)</a></em>
+    <em><a id="checkoutButton" title="Checkout Button" href="{{ url('/checkout')}}">Comprar ({{ $total_price + env('GASTOS_ENVIO') }} €)</a></em>
   </div>
 </main>
 

@@ -15,7 +15,7 @@
    @foreach ($order_lines as $line)
 
    <tr>
-     <td><strong>{{$line->product_name}}</strong></td>
+     <td><strong>{{$line->product_name}} {{$line->size ? ' - Talla '.$line->size_name : '' }}</strong></td>
      <td><strong>{{$line->units}}</strong></td>
      <td><strong>{{$line->unit_price}}</strong></td>
      <td><strong>{{$line->total_line_price}}</strong></td>

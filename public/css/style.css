@@ -21,6 +21,18 @@ body{
 
 }
 
+#categories-nav{
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+  border-color: var(--color-lemongreen);
+  background-color: var(--color-transparent);
+}
+
+#categories-nav a{
+  color: var(--color-lemongreen) !important;
+  font-weight: bold;
+}
+
 #page-nav a{
   color: var(--color-lemon) !important;
   font-weight: bold;
@@ -145,4 +157,11 @@ form{
 #foto-portada{
   width:100%;
 
+}
+
+.symbol-list:before {
+    content: '\2630';
+}
+#site-nav {
+    text-align: left !important;
 }

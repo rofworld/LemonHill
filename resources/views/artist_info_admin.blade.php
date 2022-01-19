@@ -12,7 +12,15 @@
 <form action="" method="post" action="{{ route('artist.store') }}" enctype="multipart/form-data">
 
     @csrf
-
+    @if (count($errors) > 0)
+          <div class="alert alert-danger">
+              <ul>
+                  @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                  @endforeach
+              </ul>
+          </div>
+        @endif
     <div class="form-group">
         <label>Name</label>
         <input type="text" class="form-control {{ $errors->has('name') ? 'error' : '' }}" name="name" id="name">
@@ -38,22 +46,11 @@
 
     <div class="form-group">
 
-      @if (count($errors) > 0)
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                      <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-          @endif
-
-
 
         <label>Choose Image File:</label>
         <input type="file" id="file" name="file" style="display: none;" />
         <input type="button" value="Browse..." onclick="document.getElementById('file').click();" />
-      </div>
+    </div>
 
 
 

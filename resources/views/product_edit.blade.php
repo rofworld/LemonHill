@@ -15,7 +15,15 @@
 <form  method="post" action="{{ route('product.update') }}" enctype="multipart/form-data">
 
     @csrf
-
+    @if (count($errors) > 0)
+          <div class="alert alert-danger">
+              <ul>
+                  @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                  @endforeach
+              </ul>
+          </div>
+    @endif
     <div class="form-group">
         <label>Name</label>
         <input type="text" class="form-control {{ $errors->has('name') ? 'error' : '' }}" name="name" id="name" value="{{$product->name}}">
@@ -41,13 +49,15 @@
     </div>
 
     <div class="form-group">
-        <label>Stock</label>
-        <input type="text" class="form-control {{ $errors->has('stock') ? 'error' : '' }}" name="stock" id="stock" value="{{$product->stock}}">
-
-        <!-- Error -->
-        @if ($errors->has('stock'))
+        <label>Categoria</label>
+        <strong><select name="category_id" id="category_id" value="{{$product->category}}">
+          @foreach ($categories as $category)
+            <option value="{{$category->id}}">{{$category->name}}</option>
+          @endforeach
+        </select></strong>
+        @if ($errors->has('category_id'))
         <div class="error">
-            {{ $errors->first('stock') }}
+            {{ $errors->first('category_id') }}
         </div>
         @endif
     </div>
@@ -67,18 +77,16 @@
 
     <div class="form-group">
 
-      @if (count($errors) > 0)
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                      <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-          @endif
+
           <label>Choose Image File:</label>
           <input type="file" id="file" name="file" style="display: none;" />
           <input type="button" value="Browse..." onclick="document.getElementById('file').click();" />
+          <!-- Error -->
+          @if ($errors->has('file'))
+          <div class="error">
+              {{ $errors->first('file') }}
+          </div>
+          @endif
     </div>
 
 

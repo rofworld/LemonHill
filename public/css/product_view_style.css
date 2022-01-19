@@ -20,3 +20,15 @@ section footer{
   text-align: center;
 
 }
+
+#sizeOption{
+  width:200px;
+  border:2px solid var(--color-lemongreen);
+  background-color: var(--color-transparent);
+  color: var(--color-lemongreen);
+}
+
+#labelTalla{
+  color: var(--color-lemongreen);
+  
+}

@@ -22,7 +22,7 @@
        @foreach ($order_lines as $line)
 
        <tr>
-         <td><strong><a href="/product_view/{{$line->product_id}}">{{$line->product_name}}</a></strong></td>
+         <td><strong><a href="/product_view/{{$line->product_id}}">{{$line->product_name}} {{$line->size ? ' - Talla '.$line->size_name : '' }}</a></strong></td>
          <td><strong>{{$line->units}}</strong></td>
          <td><strong>{{$line->unit_price}}</strong></td>
          <td><strong>{{$line->total_line_price}}</strong></td>

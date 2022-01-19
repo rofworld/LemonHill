@@ -17,9 +17,12 @@ $('#addToCartButton').click(function () {
   var id = parseInt($("#product_id").text());
 
   var stock_units=parseInt($("#stock_units").text());
+
+  var sizeOption=$("#sizeOption").val();
   var params = {
     id: id,
-    stock_units: stock_units
+    stock_units: stock_units,
+    sizeOption: sizeOption
   };
   $.ajaxSetup({
     headers: {

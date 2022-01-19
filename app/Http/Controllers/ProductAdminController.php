@@ -4,13 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\ProductCategory;
 use Illuminate\Support\Facades\Auth;
 
 class ProductAdminController extends Controller
 {
   public function createForm(Request $request) {
+    $categories=ProductCategory::all();
     if (Auth::user()->admin==true){
-      return view('product_creation');
+      return view('product_creation')
+      ->with('categories',$categories);
     }else{
       return "Not allowed";
     }
@@ -21,8 +24,10 @@ class ProductAdminController extends Controller
   public function editForm($id) {
     if (Auth::user()->admin==true){
       $product=Product::where('id', $id)->first();
+      $categories=ProductCategory::all();
       return view('product_edit')
-      ->with('product',$product);
+      ->with('product',$product)
+      ->with('categories',$categories);
     }else{
       return "Not allowed";
     }
@@ -36,7 +41,7 @@ class ProductAdminController extends Controller
           'name' => ['required','unique:products'],
           'description' => ['required','max:1000'],
           'file' => 'required|mimes:jpeg,png,bmp,tiff|max:4096',
-          'stock' => 'required|integer|min:0',
+          'category_id' => 'required|integer|min:1',
           'price' => 'required|numeric|min:0'
 
        ]);
@@ -53,7 +58,7 @@ class ProductAdminController extends Controller
             Product::create([
               'name' => $request->name,
               'description' => $request->description,
-              'stock' => $request->stock,
+              'category' => $request->category_id,
               'price' => $request->price,
               'image_url' => $filePath,
               'hidden' => false
@@ -71,7 +76,7 @@ class ProductAdminController extends Controller
     $this->validate($request, [
         'description' => ['required','max:1000'],
         'file' => 'required|mimes:jpeg,png,bmp,tiff|max:4096',
-        'stock' => 'required|integer|min:0',
+        'category_id' => 'required|integer|min:1',
         'price' => 'required|numeric|min:0'
 
      ]);
@@ -88,7 +93,7 @@ class ProductAdminController extends Controller
           ->update([
             'name' => $request->name,
             'description' => $request->description,
-            'stock' => $request->stock,
+            'category' => $request->category_id,
             'price' => $request->price,
             'image_url' => $filePath
           ]);

@@ -21,12 +21,25 @@
     </div>
 	</div>
   <footer>
+    @if ( count($sizes)>0 )
+    <div class="form-group">
+      <label id="labelTalla">Talla</label>
+      <br>
+      <strong><select name="sizeOption" id="sizeOption">
+          @foreach ($sizes as $size)
+            <option value="{{$size->id}}">{{$size->size_name}}</option>
+          @endforeach
+      </select></strong>
+    </div>
+    @endif
     <div class="form-group form-group-stock">
       <em><button class="plus_button" id ="less_button" title="Stock unit control" >-</button></em>
         <em><label id="stock_units" class="stock_input_label">1</label></em>
       <em><button class="plus_button" id="plus_button" title="Stock unit control" >+</button></em>
       <label hidden id="product_id">{{ $product->id }}</label>
     </div>
+
+
     <div class="form-group">
   		<em><button id="addToCartButton" title="Add to Cart Button" class="addToCartButton">Add to Cart</button></em>
     </div>

@@ -34,13 +34,11 @@
   <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
 </head>
 <body>
-
     <main id="page-main">
-
       <nav id="site-nav" class="nav-smart">
 				<div>
           <input type="checkbox" id="mobnav" name="mobnav" aria-hidden="true" hidden="">
-          <strong><label for="mobnav"><span class="symbol-list"></span></label></strong>
+          <strong><label for="mobnav"><span class="symbol-list"></span><mark></mark></label></strong>
           <div hidden="">
 					<a class="site-logo" href="http://acozar.github.io/bcncss/" title="Lemon Hill">
 						<img src="/images/logo.jpg" alt="Lemon Hill Logo" class="image-logo"><b>Lemon Hill</b>

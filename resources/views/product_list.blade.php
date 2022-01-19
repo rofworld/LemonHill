@@ -37,36 +37,7 @@
       </a></em>
       <em><a href="{{ url('/product/delete/'. $product->id) }}">Delete</a></em>
       <em><a href="{{ url('/product_edit_form/'. $product->id) }}">Edit</a></em>
-      <em><label for="modal-one-{{$product->id}}" class="stock_button">Stock {{$product->stock}}</label></em>
-      <div>
-	       <input id="modal-one-{{$product->id}}" type="checkbox" hidden>
-	        <dialog>
-		          <header>
-			             <h3>Stock</h3>
-		          </header>
-
-                  <form  method="post" action="{{ route('product.changeStock') }}">
-
-                  @csrf
-
-                  <div class="form-group">
-                      <label>New Stock</label>
-                      <input type="text" class="form-control {{ $errors->has('stock') ? 'error' : '' }}" name="stock" id="stock">
-                      <!-- Error -->
-                      @if ($errors->has('stock'))
-                      <div class="error">
-                          {{ $errors->first('stock') }}
-                      </div>
-                      @endif
-                      <input type="hidden" class="form-control" name="id" id="id" value="{{$product->id}}">
-                  </div>
-                  <input type="submit" name="send" value="Submit" class="button-dark btn-block">
-                </form>
-                  <nav>
-              			<label for="modal-one-{{$product->id}}">Close</label>
-              		</nav>
-	           </dialog>
-      </div>
+      
 
     </div>
 	   <hr>

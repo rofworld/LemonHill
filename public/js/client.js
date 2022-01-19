@@ -1,4 +1,4 @@
-var stripe = Stripe("pk_test_51IGkTPAy4FlKjV1rR8rdRHaAxJsSSPprkfsJuByNTPqIXwsh14QQW4FfZ6ftiXiNeCcvz2KC3P4Hoj4SnXGnPtyg002DjH39FE");
+var stripe = Stripe("pk_test_51KHufYGo8dODFiIb3TYLI3qVzkKu77SUn7akUj9L7TtOXnNqUjaQOfj4r5EoQfdhENiCD1mp8fWjtVkj52tSj0gS00h7bohmf8");
 var elements = stripe.elements();
 var card = elements.create('card', {
   hidePostalCode: true,

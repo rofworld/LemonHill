@@ -90,17 +90,13 @@ class PaymentController extends Controller
               'product_name' =>  $line['product_name'],
               'units' =>  $line['units'],
               'unit_price' =>  $line['unit_price'],
-              'total_line_price' =>  $line['total_line_price']
+              'total_line_price' =>  $line['total_line_price'],
+              'size' => $line['size'],
+              'size_name' => $line['size_name']
 
           ]);
 
-          //Update product stock
-          $product = Product::find($line['product_id']);
-          $stock=$product->stock - intval($line['units']);
-          if ($stock<0){
-            $stock=0;
-          }
-          Product::where('id',$line['product_id'])->update(['stock' => $stock]);
+
         }
 
 
@@ -131,7 +127,7 @@ class PaymentController extends Controller
 
           $data_mail["email"] = Auth::user()->email;
           $data_mail["title"] = "Factura de su pedido ".$new_order->id;
-          $data_mail["body"] = "Le enviamos la factura de su pedido ".$new_order->id;
+          $data_mail["body"] = "Le enviamos la factura de su pedido ".$new_order->id."\n Un Saludo";
 
           $order_id = $new_order->id;
           Mail::send('emails.factura', $data_mail, function($message) use($data_mail, $pdf,$order_id) {

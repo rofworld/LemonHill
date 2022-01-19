@@ -40,8 +40,10 @@
     </details>
 
       <div id="artist_admin_buttons" class="artist_admin_buttons">
+        @if (Auth::check() && Auth::user()->admin==true)
         <em><a href="{{ url('/artist_info/delete/'. $artist->id) }}" class="btn">Delete</a></em>
         <em><a href="{{ url('/links/list/'. $artist->id) }}" class="btn">Links</a></em>
+        @endif
       </div>
     </article>
 

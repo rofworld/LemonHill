@@ -8,7 +8,7 @@
           {{ $success }}
       </div>
     @endisset
-  <img src="/images/portada.jpg" id="foto-portada">
+  <img src="/images/portada-min.jpg" id="foto-portada">
   <div>
           <div class="flex-grid-2">
           	<section class="panel"><img src="/images/logo.jpg"></section>
@@ -30,7 +30,7 @@
                         <li>
                           <input type="radio" id="carousel-1" name="carousel" hidden checked>
                           <div hidden>
-                            <img src="/images/camiseta1.jpg" alt="Camiseta 1">
+                            <img src="/images/camiseta1-min.jpg" alt="Camiseta 1">
                             <label for="carousel-3"><</label>
                             <label for="carousel-2">></label>
                           </div>
